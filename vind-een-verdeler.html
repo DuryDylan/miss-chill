@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vind een Verdeler — Miss Chill</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/i18next@23/dist/umd/i18next.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@8/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+  <style>
+    :root {
+      --c-bg:          #FAF2EC;
+      --c-text-alt:    #FAF2EC;
+      --c-placeholder: #2A1520;
+      --c-accent:      #C96B7E;
+      --c-secondary:   #C9A254;
+      --c-accent-dark: #A3465A;
+      --c-dark:        #1C1016;
+      --offset:        5vw;
+      --radius:        2rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      background: var(--c-dark);
+      color: var(--c-accent);
+      font-family: 'Bebas Neue', Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* ── NAV ── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 1.4rem var(--offset);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(28,16,22,.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201,162,84,.14);
+    }
+    .nav-logo img {
+      height: 2.6rem;
+      filter: brightness(0) invert(1);
+      opacity: .65;
+      transition: opacity .3s;
+    }
+    .nav-logo:hover img { opacity: 1; }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      font-size: 1rem;
+      letter-spacing: .2em;
+      color: rgba(250,242,236,.45);
+    }
+    .nav-links a { transition: color .2s; }
+    .nav-links a:hover { color: var(--c-secondary); }
+    .nav-links a.active { color: var(--c-secondary); }
+
+    /* ── LOCATOR LAYOUT ── */
+    .locator-wrap {
+      position: fixed;
+      top: 5.5rem;
+      left: 0; right: 0; bottom: 0;
+      display: flex;
+    }
+
+    /* ── LEFT PANEL ── */
+    .locator-panel {
+      width: 400px;
+      min-width: 300px;
+      background: var(--c-dark);
+      border-right: 1px solid rgba(201,162,84,.12);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .panel-header {
+      padding: 2.5rem 2.5rem 2rem;
+      border-bottom: 1px solid rgba(201,162,84,.08);
+      flex-shrink: 0;
+    }
+    .finder-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--c-secondary);
+      margin-bottom: 1rem;
+    }
+    .finder-title {
+      font-size: clamp(2.8rem, 4.5vw, 4.5rem);
+      line-height: .88;
+      color: var(--c-text-alt);
+      text-transform: uppercase;
+    }
+    .finder-title .gold { color: var(--c-secondary); }
+
+    /* Search */
+    .panel-search {
+      padding: 1.5rem 2.5rem;
+      border-bottom: 1px solid rgba(201,162,84,.07);
+      flex-shrink: 0;
+    }
+    .search-wrap { position: relative; }
+    .search-wrap svg {
+      position: absolute;
+      left: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1rem; height: 1rem;
+      color: rgba(201,162,84,.45);
+      pointer-events: none;
+    }
+    #search-input {
+      width: 100%;
+      background: rgba(250,242,236,.05);
+      border: 1px solid rgba(201,162,84,.18);
+      color: var(--c-text-alt);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: .05em;
+      padding: 1rem 1.2rem 1rem 3rem;
+      outline: none;
+      transition: border-color .2s, background .2s;
+      border-radius: 0;
+      -webkit-appearance: none;
+    }
+    #search-input::placeholder { color: rgba(250,242,236,.22); }
+    #search-input:focus {
+      border-color: rgba(201,162,84,.55);
+      background: rgba(250,242,236,.08);
+    }
+    #search-input::-webkit-search-cancel-button { -webkit-appearance: none; }
+
+    /* Results */
+    .results-meta {
+      padding: 1rem 2.5rem .6rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(250,242,236,.22);
+      flex-shrink: 0;
+    }
+
+    .panel-results {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+    .panel-results::-webkit-scrollbar { width: 2px; }
+    .panel-results::-webkit-scrollbar-track { background: transparent; }
+    .panel-results::-webkit-scrollbar-thumb { background: rgba(201,162,84,.2); }
+
+    .store-list { list-style: none; }
+    .store-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      padding: 1.5rem 2.5rem;
+      border-top: 1px solid rgba(250,242,236,.045);
+      cursor: pointer;
+      transition: background .2s,
+                  padding-left .3s cubic-bezier(.25,.46,.45,.94),
+                  border-left-color .2s;
+      border-left: 2px solid transparent;
+    }
+    .store-item:hover {
+      background: rgba(201,162,84,.04);
+      padding-left: 3rem;
+    }
+    .store-item.active {
+      background: rgba(201,162,84,.06);
+      padding-left: 3rem;
+      border-left-color: var(--c-secondary);
+    }
+    .store-num {
+      font-size: 1rem;
+      color: rgba(201,162,84,.3);
+      min-width: 2rem;
+      padding-top: .15rem;
+      transition: color .2s;
+    }
+    .store-item:hover .store-num,
+    .store-item.active .store-num { color: var(--c-secondary); }
+    .store-info { flex: 1; min-width: 0; }
+    .store-name {
+      font-size: 1.25rem;
+      color: var(--c-text-alt);
+      line-height: 1;
+      margin-bottom: .35rem;
+    }
+    .store-city {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--c-secondary);
+      margin-bottom: .45rem;
+    }
+    .store-addr {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .9rem;
+      font-weight: 400;
+      line-height: 1.55;
+      color: rgba(250,242,236,.28);
+    }
+    .store-route {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--c-secondary);
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      margin-top: .9rem;
+      opacity: 0;
+      transform: translateY(5px);
+      transition: opacity .2s, transform .2s;
+    }
+    .store-item:hover .store-route,
+    .store-item.active .store-route { opacity: 1; transform: translateY(0); }
+
+    .no-results {
+      padding: 3.5rem 2.5rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: rgba(250,242,236,.18);
+      text-align: center;
+      display: none;
+      letter-spacing: .06em;
+    }
+
+    /* ── MAP ── */
+    .locator-map { flex: 1; position: relative; }
+    #map { width: 100%; height: 100%; }
+
+    /* Warm tint on tiles for a luxe cream look */
+    .leaflet-tile-pane {
+      filter: sepia(22%) brightness(0.97) saturate(0.82) contrast(1.04);
+    }
+
+    /* Custom popup styling */
+    .leaflet-popup-content-wrapper {
+      background: var(--c-bg) !important;
+      border-radius: 0 !important;
+      border: 1px solid rgba(201,162,84,.28) !important;
+      box-shadow: 0 12px 48px rgba(42,21,32,.2) !important;
+      padding: 0 !important;
+    }
+    .leaflet-popup-content {
+      margin: 0 !important;
+      width: auto !important;
+    }
+    .leaflet-popup-tip { background: var(--c-bg) !important; }
+    .leaflet-popup-close-button {
+      color: rgba(42,21,32,.35) !important;
+      font-size: 1.1rem !important;
+      padding: .5rem .75rem !important;
+      top: .4rem !important;
+      right: .4rem !important;
+    }
+    .leaflet-popup-close-button:hover { color: var(--c-accent) !important; }
+    .mc-popup {
+      padding: 1.5rem 1.8rem 1.6rem;
+      min-width: 190px;
+    }
+    .mc-popup-city {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--c-secondary);
+      margin-bottom: .35rem;
+    }
+    .mc-popup-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      line-height: 1;
+      color: var(--c-placeholder);
+      margin-bottom: .7rem;
+    }
+    .mc-popup-addr {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .88rem;
+      line-height: 1.55;
+      color: rgba(42,21,32,.5);
+    }
+
+    /* Zoom controls */
+    .leaflet-bar {
+      border: none !important;
+      border-radius: 0 !important;
+      box-shadow: 0 4px 20px rgba(42,21,32,.18) !important;
+    }
+    .leaflet-control-zoom-in,
+    .leaflet-control-zoom-out {
+      background: var(--c-dark) !important;
+      color: var(--c-secondary) !important;
+      border: none !important;
+      border-radius: 0 !important;
+      font-size: 1.1rem !important;
+      font-weight: 300 !important;
+      width: 34px !important;
+      height: 34px !important;
+      line-height: 34px !important;
+    }
+    .leaflet-control-zoom-in:hover,
+    .leaflet-control-zoom-out:hover {
+      background: rgba(201,162,84,.15) !important;
+      color: var(--c-text-alt) !important;
+    }
+    .leaflet-control-zoom-in { border-bottom: 1px solid rgba(201,162,84,.15) !important; }
+    .leaflet-control-attribution {
+      background: rgba(28,16,22,.65) !important;
+      color: rgba(250,242,236,.25) !important;
+      font-family: 'Barlow Condensed', sans-serif !important;
+      font-size: .65rem !important;
+      letter-spacing: .04em !important;
+      backdrop-filter: blur(4px) !important;
+    }
+    .leaflet-control-attribution a { color: rgba(250,242,236,.35) !important; }
+
+    /* ── LANGUAGE SELECTOR ── */
+    .lang-selector { position: relative; margin-left: 1.5rem; }
+    .lang-current {
+      background: none;
+      border: 1px solid rgba(201,162,84,.22);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .92rem; font-weight: 600; letter-spacing: .18em;
+      color: rgba(250,242,236,.5); cursor: pointer;
+      padding: .7rem 1.4rem;
+      transition: border-color .2s, color .2s;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .lang-current:hover { border-color: var(--c-secondary); color: var(--c-secondary); }
+    .lang-current svg { width: .8rem; height: .8rem; opacity: .6; transition: transform .2s; }
+    .lang-selector.open .lang-current svg { transform: rotate(180deg); }
+    .lang-dropdown {
+      position: absolute; top: calc(100% + .6rem); right: 0;
+      background: var(--c-dark);
+      border: 1px solid rgba(201,162,84,.2);
+      min-width: 220px; list-style: none;
+      opacity: 0; pointer-events: none;
+      transform: translateY(-6px);
+      transition: opacity .2s, transform .2s;
+      z-index: 300;
+    }
+    .lang-selector.open .lang-dropdown { opacity: 1; pointer-events: all; transform: none; }
+    .lang-dropdown li:not(:last-child) { border-bottom: 1px solid rgba(201,162,84,.08); }
+    .lang-option {
+      width: 100%; background: none; border: none; text-align: left;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .85rem; font-weight: 600; letter-spacing: .14em;
+      color: rgba(250,242,236,.45); cursor: pointer;
+      padding: 1rem 1.6rem;
+      display: flex; align-items: center; gap: 1rem;
+      transition: color .15s, background .15s;
+    }
+    .lang-option span { font-weight: 400; color: var(--c-secondary); letter-spacing: .05em; font-size: .78rem; }
+    .lang-option:hover { color: var(--c-text-alt); background: rgba(201,162,84,.06); }
+    .lang-option.active { color: var(--c-text-alt); }
+    .lang-option.active::after { content: ''; display: block; width: .4rem; height: .4rem; border-radius: 50%; background: var(--c-secondary); margin-left: auto; }
+
+    /* ── LANGUAGE MODAL ── */
+    #lang-modal {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(28,16,22,.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity .35s ease;
+    }
+    #lang-modal.visible { opacity: 1; pointer-events: all; }
+    .lang-modal-card {
+      background: var(--c-bg);
+      border: 1px solid rgba(201,162,84,.2);
+      padding: 3.5rem 3rem 2.5rem;
+      max-width: 520px; width: 92%;
+      text-align: center;
+    }
+    .lang-modal-logo { height: 2.6rem; margin: 0 auto 2rem; }
+    .lang-modal-tagline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .52rem; font-weight: 400; letter-spacing: .28em;
+      text-transform: uppercase; color: var(--c-secondary);
+      margin-bottom: 2.2rem;
+    }
+    .lang-modal-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: .6rem;
+      margin-bottom: 1.8rem;
+    }
+    .lang-modal-btn {
+      display: flex; flex-direction: column; align-items: center; gap: .25rem;
+      padding: 1rem .5rem;
+      background: none; border: 1px solid rgba(201,162,84,.18); cursor: pointer;
+      transition: border-color .2s, background .2s;
+    }
+    .lang-modal-btn:hover { border-color: var(--c-secondary); background: rgba(201,162,84,.05); }
+    .lang-modal-btn strong {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem; letter-spacing: .06em; color: var(--c-placeholder);
+      transition: color .2s;
+    }
+    .lang-modal-btn span {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .36rem; font-weight: 400; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--c-secondary);
+    }
+    .lang-modal-btn:hover strong { color: var(--c-accent); }
+    #lang-modal-skip {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .4rem; letter-spacing: .16em; text-transform: uppercase;
+      color: rgba(42,21,32,.3); cursor: pointer;
+      transition: color .2s; display: inline-block;
+    }
+    #lang-modal-skip:hover { color: var(--c-placeholder); }
+
+    /* ── COUNTRY FILTER ── */
+    .filter-wrap {
+      position: relative;
+      margin-top: .85rem;
+    }
+    .filter-wrap > svg {
+      position: absolute;
+      left: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1rem; height: 1rem;
+      color: rgba(201,162,84,.45);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .filter-wrap::after {
+      content: '';
+      position: absolute;
+      right: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0; height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 5px solid rgba(201,162,84,.4);
+      pointer-events: none;
+    }
+    #country-filter {
+      width: 100%;
+      background: rgba(250,242,236,.05);
+      border: 1px solid rgba(201,162,84,.18);
+      color: var(--c-text-alt);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: .05em;
+      padding: 1rem 2.4rem 1rem 3rem;
+      outline: none;
+      transition: border-color .2s, background .2s;
+      border-radius: 0;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      cursor: pointer;
+    }
+    #country-filter:focus {
+      border-color: rgba(201,162,84,.55);
+      background: rgba(250,242,236,.08);
+    }
+    #country-filter option {
+      background: #1C1016;
+      color: #FAF2EC;
+    }
+
+    /* ── CLUSTER BUBBLES ── */
+    .mc-cluster-bubble {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: .06em;
+      background: var(--c-dark);
+      border: 2px solid var(--c-secondary);
+      border-radius: 50%;
+      color: var(--c-secondary);
+      box-shadow: 0 4px 20px rgba(42,21,32,.65), 0 0 0 4px rgba(201,162,84,.1);
+      transition: transform .2s ease;
+    }
+    .mc-cluster-bubble:hover { transform: scale(1.08); }
+
+    /* ── TYPE BADGES in list ── */
+    .store-type-badge {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase;
+      padding: .15rem .55rem;
+      display: inline-flex; align-items: center; gap: .35rem;
+      margin-bottom: .45rem;
+    }
+    .store-type-badge.shop        { color: #C96B7E; border: 1px solid rgba(201,107,126,.3); }
+    .store-type-badge.bar         { color: #C9A254; border: 1px solid rgba(201,162,84,.3); }
+    .store-type-badge.distributor { color: rgba(250,242,236,.55); border: 1px solid rgba(250,242,236,.14); }
+    .store-type-badge .badge-dot  {
+      width: 5px; height: 5px; border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .store-type-badge.shop .badge-dot        { background: #C96B7E; }
+    .store-type-badge.bar .badge-dot         { background: #C9A254; }
+    .store-type-badge.distributor .badge-dot {
+      background: none;
+      border: 1px solid rgba(201,162,84,.6);
+      transform: rotate(45deg);
+      border-radius: 1px;
+    }
+
+    /* ── RESPONSIVE ── */
+    /* ═══════════════════════════════════════════
+       HAMBURGER & MOBILE NAV
+    ═══════════════════════════════════════════ */
+    .nav-hamburger {
+      display: none;
+      background: none; border: none; cursor: pointer;
+      padding: .5rem; flex-direction: column; gap: 5px;
+      z-index: 600; position: relative;
+      color: rgba(250,242,236,.85);
+    }
+    .ham-line {
+      display: block; width: 24px; height: 1.5px;
+      background: currentColor;
+      transition: transform .3s cubic-bezier(.25,.46,.45,.94), opacity .3s;
+      transform-origin: center;
+    }
+    .nav-hamburger.is-open .ham-line:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.is-open .ham-line:nth-child(2) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mob-menu {
+      position: fixed; inset: 0; z-index: 500;
+      background: #1C1016;
+      display: flex; flex-direction: column;
+      padding: 6.5rem 2rem 3rem;
+      opacity: 0; pointer-events: none;
+      transform: translateY(-8px);
+      transition: opacity .3s ease, transform .3s ease;
+      overflow-y: auto;
+    }
+    .mob-menu.is-open { opacity: 1; pointer-events: all; transform: none; }
+    .mob-menu-links { display: flex; flex-direction: column; flex: 1; }
+    .mob-menu-links a {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.6rem, 12vw, 4rem);
+      letter-spacing: .05em; text-transform: uppercase;
+      color: rgba(250,242,236,.75);
+      border-bottom: 1px solid rgba(201,162,84,.12);
+      padding: .85rem 0;
+      transition: color .2s, padding-left .2s; display: block;
+    }
+    .mob-menu-links a:hover, .mob-menu-links a.active { color: var(--c-secondary); }
+    .mob-lang-row {
+      display: flex; flex-wrap: wrap; gap: .5rem;
+      padding-top: 2rem; margin-top: auto;
+      border-top: 1px solid rgba(201,162,84,.1);
+    }
+    .mob-lang-btn {
+      background: none; border: 1px solid rgba(201,162,84,.2);
+      color: rgba(250,242,236,.45);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .8rem; font-weight: 700; letter-spacing: .14em;
+      padding: .55rem 1rem; cursor: pointer;
+      transition: border-color .2s, color .2s, background .2s;
+    }
+    .mob-lang-btn.active, .mob-lang-btn:hover {
+      border-color: var(--c-secondary); color: rgba(250,242,236,.9);
+      background: rgba(201,162,84,.06);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .lang-selector { display: none !important; }
+      .nav-hamburger { display: flex; }
+
+      .locator-wrap { flex-direction: column; }
+      .locator-panel { width: 100%; min-width: 0; height: auto; max-height: 55vh; }
+      .panel-results { max-height: 35vh; }
+      .locator-map { flex: none; height: 50vh; min-height: 220px; }
+      .panel-header { padding: 1.5rem 1.4rem 1.2rem; }
+      .panel-search { padding: 1rem 1.4rem; }
+      .store-item { padding: 1.2rem 1.4rem; }
+      .store-item:hover, .store-item.active { padding-left: 2rem; }
+      .results-meta { padding: .8rem 1.4rem .4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════ NAV ══════════ -->
+  <nav id="nav">
+    <a href="index.html" class="nav-logo" aria-label="Miss Chill — home">
+      <img src="brand_assets/Miss Chill Logo.png" alt="Miss Chill">
+    </a>
+    <div class="nav-links" aria-label="Navigation">
+      <a href="index.html#about" data-i18n="nav.story">Story</a>
+      <a href="index.html#products" data-i18n="nav.products">Products</a>
+      <a href="personaliseren.html" data-i18n="nav.personalize">Personaliseren</a>
+      <a href="contact.html" data-i18n="nav.contact">Contact</a>
+      <a href="vind-een-verdeler.html" data-i18n="nav.find_us" class="active">Find Us</a>
+    </div>
+    <div class="lang-selector" role="navigation" aria-label="Language">
+      <button class="lang-current" aria-haspopup="listbox" aria-label="Select language">
+        <span class="lang-current-code">NL</span>
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </button>
+      <ul class="lang-dropdown" role="listbox">
+        <li><button class="lang-option" data-lang="en" role="option">EN <span>English</span></button></li>
+        <li><button class="lang-option" data-lang="nl" role="option">NL <span>Nederlands</span></button></li>
+        <li><button class="lang-option" data-lang="fr" role="option">FR <span>Français</span></button></li>
+        <li><button class="lang-option" data-lang="de" role="option">DE <span>Deutsch</span></button></li>
+        <li><button class="lang-option" data-lang="es" role="option">ES <span>Español</span></button></li>
+        <li><button class="lang-option" data-lang="it" role="option">IT <span>Italiano</span></button></li>
+        <li><button class="lang-option" data-lang="et" role="option">ET <span>Eesti</span></button></li>
+        <li><button class="lang-option" data-lang="pt" role="option">PT <span>Português</span></button></li>
+      </ul>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+      <span class="ham-line"></span>
+      <span class="ham-line"></span>
+    </button>
+  </nav>
+
+  <!-- ══════════ MOBILE MENU ══════════ -->
+  <div class="mob-menu" id="mob-menu" aria-hidden="true">
+    <nav class="mob-menu-links">
+      <a href="index.html#about" data-i18n="nav.story">Verhaal</a>
+      <a href="index.html#products" data-i18n="nav.products">Producten</a>
+      <a href="personaliseren.html" data-i18n="nav.personalize">Personaliseren</a>
+      <a href="contact.html" data-i18n="nav.contact">Contact</a>
+      <a href="vind-een-verdeler.html" data-i18n="nav.find_us" class="active">Vind Ons</a>
+    </nav>
+    <div class="mob-lang-row">
+      <button class="mob-lang-btn" data-lang="en">EN</button>
+      <button class="mob-lang-btn" data-lang="nl">NL</button>
+      <button class="mob-lang-btn" data-lang="fr">FR</button>
+      <button class="mob-lang-btn" data-lang="de">DE</button>
+      <button class="mob-lang-btn" data-lang="es">ES</button>
+      <button class="mob-lang-btn" data-lang="it">IT</button>
+      <button class="mob-lang-btn" data-lang="et">ET</button>
+      <button class="mob-lang-btn" data-lang="pt">PT</button>
+    </div>
+  </div>
+
+  <!-- ══════════ LOCATOR ══════════ -->
+  <div class="locator-wrap">
+
+    <!-- LEFT PANEL -->
+    <aside class="locator-panel" aria-label="Verdelers">
+      <div class="panel-header">
+        <p class="finder-eyebrow" data-i18n="finder.label">VIND ONS · VERDELERS</p>
+        <h1 class="finder-title">
+          <span data-i18n="finder.title1">VIND EEN</span><br>
+          <span class="gold" data-i18n="finder.title2">VERDELER</span>
+        </h1>
+      </div>
+
+      <div class="panel-search">
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input
+            type="search"
+            id="search-input"
+            autocomplete="off"
+            spellcheck="false"
+            data-i18n-placeholder="finder.search_ph"
+            placeholder="Zoek op postcode of gemeente...">
+        </div>
+        <div class="filter-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <select id="country-filter" aria-label="Filter op land">
+            <option value="">Alle landen</option>
+          </select>
+        </div>
+      </div>
+
+      <p class="results-meta" id="results-count" aria-live="polite"></p>
+
+      <div class="panel-results">
+        <ul class="store-list" id="store-list" role="list"></ul>
+        <p class="no-results" id="no-results" data-i18n="finder.no_results">Geen resultaten gevonden</p>
+      </div>
+    </aside>
+
+    <!-- MAP -->
+    <div class="locator-map" aria-label="Kaart">
+      <div id="map"></div>
+    </div>
+
+  </div>
+
+  <!-- ══════════ LANGUAGE MODAL ══════════ -->
+  <div id="lang-modal" role="dialog" aria-modal="true" aria-label="Language selection">
+    <div class="lang-modal-card">
+      <img src="brand_assets/Miss Chill Logo.png" alt="Miss Chill" class="lang-modal-logo">
+      <p class="lang-modal-tagline" data-i18n="modal.tagline">Choose your language</p>
+      <div class="lang-modal-grid">
+        <button class="lang-modal-btn" data-lang="en"><strong>EN</strong><span>English</span></button>
+        <button class="lang-modal-btn" data-lang="nl"><strong>NL</strong><span>Nederlands</span></button>
+        <button class="lang-modal-btn" data-lang="fr"><strong>FR</strong><span>Français</span></button>
+        <button class="lang-modal-btn" data-lang="de"><strong>DE</strong><span>Deutsch</span></button>
+        <button class="lang-modal-btn" data-lang="es"><strong>ES</strong><span>Español</span></button>
+        <button class="lang-modal-btn" data-lang="it"><strong>IT</strong><span>Italiano</span></button>
+        <button class="lang-modal-btn" data-lang="et"><strong>ET</strong><span>Eesti</span></button>
+        <button class="lang-modal-btn" data-lang="pt"><strong>PT</strong><span>Português</span></button>
+      </div>
+      <p id="lang-modal-skip" data-i18n="modal.skip">Skip</p>
+    </div>
+  </div>
+
+  <!-- ══════════ LEAFLET + MARKERCLUSTER ══════════ -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <script src="translations.js"></script>
+  <script src="dealers-data.js"></script>
+
+  <script>
+    /* ─── TYPE MAPPING ─────────────────────────────────────
+       ALL_DEALERS gebruikt NL labels:
+         'Winkel'     → 'shop'        → geclusterd
+         'Lounge bar' → 'bar'         → geclusterd
+         'Verdeler'   → 'distributor' → ALTIJD losse pin
+    ────────────────────────────────────────────────────── */
+    const TYPE_CLASS = { 'Winkel': 'shop', 'Bar': 'bar', 'Lounge bar': 'bar', 'Verdeler': 'distributor' };
+
+    const COUNTRY_NAMES = {
+      'AT': 'Oostenrijk',
+      'BE': 'België',
+      'CH': 'Zwitserland',
+      'DE': 'Duitsland',
+      'DO': 'Dominicaanse Republiek',
+      'EE': 'Estland',
+      'FR': 'Frankrijk',
+      'IT': 'Italië',
+      'LU': 'Luxemburg',
+    };
+
+    /* ─── NORMALIZE ALL_DEALERS → internal format ─── */
+    function parseAddr(raw) {
+      /* Matches: "Street Name 12, 2270 City-Name (BE)" */
+      const m = raw.match(/^(.*?),\s*(\d{4,6})\s+(.*?)\s*\([A-Z]{2}\)\s*$/);
+      if (m) return { street: m[1].trim(), postal: m[2], city: m[3].trim() };
+      return { street: raw, postal: '', city: '' };
+    }
+
+    const verdelers = (typeof ALL_DEALERS !== 'undefined' ? ALL_DEALERS : []).map((d, i) => {
+      const { street, postal, city } = parseAddr(d.address || '');
+      return {
+        id:      i + 1,
+        type:    TYPE_CLASS[d.type] || 'shop',
+        name:    d.name || '',
+        city,
+        address: street,
+        postal,
+        country: d.country || '',
+        lat:     d.lat,
+        lng:     d.lng,
+      };
+    });
+
+    /* ─── COUNTRY FILTER — rebuilt on every language change ─── */
+    const COUNTRY_CODES = [...new Set(verdelers.map(v => v.country).filter(Boolean))].sort();
+
+    function buildCountryFilter() {
+      const t   = (typeof i18next !== 'undefined' && i18next.isInitialized);
+      const sel = document.getElementById('country-filter');
+      const saved = sel.value;            /* remember current selection */
+      sel.innerHTML = '';
+
+      const all = document.createElement('option');
+      all.value       = '';
+      all.textContent = t ? i18next.t('finder.all_countries') : 'Alle landen';
+      sel.appendChild(all);
+
+      COUNTRY_CODES.forEach(cc => {
+        const opt = document.createElement('option');
+        opt.value       = cc;
+        opt.textContent = t
+          ? i18next.t(`countries.${cc.toLowerCase()}`, { defaultValue: COUNTRY_NAMES[cc] || cc })
+          : (COUNTRY_NAMES[cc] || cc);
+        sel.appendChild(opt);
+      });
+
+      sel.value = saved;                  /* restore selection */
+    }
+
+    buildCountryFilter();                 /* initial render (before i18n) */
+
+    /* ─── STATE ─── */
+    let map            = null;
+    let clusterGroup   = null;
+    const allMarkers   = {};           /* id → { marker, type } */
+    let activeId       = null;
+    let currentQuery   = '';
+    let currentCountry = '';
+
+    /* ─── ICONS ─── */
+    function createIcon(type, active) {
+      if (type === 'distributor') {
+        const s = active ? 20 : 15;
+        return L.divIcon({
+          className: '',
+          html: `<div style="
+            width:${s}px;height:${s}px;
+            background:${active ? '#C9A254' : '#2A1520'};
+            border:2px solid #C9A254;
+            transform:rotate(45deg);
+            box-shadow:0 3px 16px rgba(42,21,32,.65);
+          "></div>`,
+          iconSize: [s, s], iconAnchor: [s / 2, s / 2],
+          popupAnchor: [0, -(s / 2 + 8)]
+        });
+      }
+      const color       = type === 'bar' ? '#C9A254' : '#C96B7E';
+      const activeColor = type === 'bar' ? '#C96B7E' : '#C9A254';
+      const s = active ? 18 : 13;
+      return L.divIcon({
+        className: '',
+        html: `<div style="
+          width:${s}px;height:${s}px;
+          background:${active ? activeColor : color};
+          border-radius:50%;
+          border:2.5px solid rgba(250,242,236,.92);
+          box-shadow:0 3px 14px rgba(42,21,32,.45);
+        "></div>`,
+        iconSize: [s, s], iconAnchor: [s / 2, s / 2],
+        popupAnchor: [0, -(s / 2 + 6)]
+      });
+    }
+
+    /* ─── CLUSTER ICON ─── */
+    function createClusterIcon(cluster) {
+      const n = cluster.getChildCount();
+      const s = n < 5 ? 36 : n < 15 ? 42 : 50;
+      return L.divIcon({
+        className: '',
+        html: `<div class="mc-cluster-bubble" style="width:${s}px;height:${s}px;font-size:${s > 42 ? '1.15rem' : '1rem'}">${n}</div>`,
+        iconSize: [s, s], iconAnchor: [s / 2, s / 2]
+      });
+    }
+
+    /* ─── POPUP ─── */
+    function buildPopup(v) {
+      const t         = (typeof i18next !== 'undefined' && i18next.isInitialized);
+      const typeLabel = t ? i18next.t(`finder.type_${v.type}`) : v.type;
+      return `<div class="mc-popup">
+        <p class="mc-popup-city">${v.postal} ${v.city} · <span style="opacity:.6">${typeLabel}</span></p>
+        <p class="mc-popup-name">${v.name}</p>
+        <p class="mc-popup-addr">${v.address}<br>${v.postal} ${v.city}</p>
+      </div>`;
+    }
+
+    /* ─── MAP INIT ─── */
+    function initMap() {
+      if (map) return;
+
+      map = L.map('map', { center: [50.85, 4.35], zoom: 7, zoomControl: false });
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd', maxZoom: 20
+      }).addTo(map);
+
+      L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+      clusterGroup = L.markerClusterGroup({
+        iconCreateFunction: createClusterIcon,
+        maxClusterRadius: 65,
+        showCoverageOnHover: false,
+        zoomToBoundsOnClick: true,
+        spiderfyOnMaxZoom: true,
+        animate: true
+      });
+
+      verdelers.forEach(v => {
+        const marker = L.marker([v.lat, v.lng], { icon: createIcon(v.type, false) });
+        marker.bindPopup(buildPopup(v), { closeButton: true, maxWidth: 260, minWidth: 200 });
+        marker.on('click', () => {
+          setActive(v.id);
+          map.flyTo([v.lat, v.lng], 14, { duration: 1.1 });
+        });
+        allMarkers[v.id] = { marker, type: v.type };
+
+        if (v.type === 'distributor') {
+          marker.addTo(map);            /* always visible, never clustered */
+        } else {
+          clusterGroup.addLayer(marker);
+        }
+      });
+
+      clusterGroup.addTo(map);
+    }
+
+    /* ─── ACTIVE STATE ─── */
+    function setActive(id) {
+      if (activeId !== null && allMarkers[activeId]) {
+        const { marker, type } = allMarkers[activeId];
+        marker.setIcon(createIcon(type, false));
+      }
+      activeId = id;
+      if (allMarkers[id]) {
+        const { marker, type } = allMarkers[id];
+        marker.setIcon(createIcon(type, true));
+        marker.openPopup();
+      }
+      document.querySelectorAll('.store-item').forEach(el => {
+        el.classList.toggle('active', parseInt(el.dataset.id) === id);
+      });
+    }
+
+    /* ─── SYNC MAP TO FILTERED RESULTS ─── */
+    function applyMapFilter(results) {
+      if (!map) return;
+      const shownIds = new Set(results.map(v => v.id));
+
+      clusterGroup.clearLayers();
+      verdelers.forEach(v => {
+        if (!shownIds.has(v.id)) {
+          if (v.type === 'distributor' && map.hasLayer(allMarkers[v.id].marker)) {
+            map.removeLayer(allMarkers[v.id].marker);
+          }
+          if (activeId === v.id) activeId = null;
+          return;
+        }
+        if (v.type === 'distributor') {
+          if (!map.hasLayer(allMarkers[v.id].marker)) allMarkers[v.id].marker.addTo(map);
+        } else {
+          clusterGroup.addLayer(allMarkers[v.id].marker);
+        }
+      });
+
+      if (results.length === 1) {
+        map.flyTo([results[0].lat, results[0].lng], 14, { duration: 1 });
+        setActive(results[0].id);
+      } else if (results.length > 1 && results.length < verdelers.length) {
+        const bounds = L.latLngBounds(results.map(v => [v.lat, v.lng]));
+        map.flyToBounds(bounds, { padding: [60, 60], maxZoom: 13, duration: 1 });
+      }
+    }
+
+    /* ─── RENDER LIST ─── */
+    function typeBadge(type) {
+      const t     = (typeof i18next !== 'undefined' && i18next.isInitialized);
+      const label = t ? i18next.t(`finder.type_${type}`) : type;
+      return `<span class="store-type-badge ${type}"><span class="badge-dot"></span>${label}</span>`;
+    }
+
+    function renderList(data) {
+      const list    = document.getElementById('store-list');
+      const noRes   = document.getElementById('no-results');
+      const countEl = document.getElementById('results-count');
+      list.innerHTML = '';
+
+      if (data.length === 0) {
+        noRes.style.display = 'block';
+        countEl.textContent = '';
+        return;
+      }
+
+      noRes.style.display = 'none';
+      const t        = (typeof i18next !== 'undefined' && i18next.isInitialized);
+      countEl.textContent = `${data.length} ${t ? i18next.t('finder.stores_found') : 'locaties gevonden'}`;
+      const dirLabel = t ? i18next.t('finder.directions') : 'Route';
+
+      /* render max 200 items for DOM performance; full set stays in map */
+      const visible = data.slice(0, 200);
+      visible.forEach((v, idx) => {
+        const li      = document.createElement('li');
+        li.className  = 'store-item' + (v.id === activeId ? ' active' : '');
+        li.dataset.id = v.id;
+        li.setAttribute('role', 'listitem');
+        li.innerHTML  = `
+          <span class="store-num">${String(idx + 1).padStart(2, '0')}</span>
+          <div class="store-info">
+            ${typeBadge(v.type)}
+            <p class="store-name">${v.name}</p>
+            <p class="store-city">${v.city}</p>
+            <p class="store-addr">${v.address}<br>${v.postal} ${v.city}</p>
+            <a class="store-route"
+               href="https://www.google.com/maps/dir/?api=1&destination=${v.lat},${v.lng}"
+               target="_blank" rel="noopener noreferrer">${dirLabel} →</a>
+          </div>`;
+        li.addEventListener('click', () => {
+          setActive(v.id);
+          if (map) map.flyTo([v.lat, v.lng], 14, { duration: 1.1 });
+        });
+        list.appendChild(li);
+      });
+
+      if (data.length > 200) {
+        const more = document.createElement('li');
+        more.style.cssText = 'padding:1.2rem 2.5rem;font-family:Barlow Condensed,sans-serif;font-size:.82rem;letter-spacing:.1em;color:rgba(250,242,236,.22);text-align:center';
+        more.textContent = `+ ${data.length - 200} meer — verfijn je zoekopdracht`;
+        list.appendChild(more);
+      }
+    }
+
+    /* ─── FILTER ─── */
+    function filterStores(query, country) {
+      let results = verdelers;
+      if (country) results = results.filter(v => v.country === country);
+      if (query.trim()) {
+        const q = query.toLowerCase().trim();
+        results  = results.filter(v =>
+          v.name.toLowerCase().includes(q) ||
+          v.city.toLowerCase().includes(q) ||
+          v.postal.includes(q) ||
+          v.address.toLowerCase().includes(q)
+        );
+      }
+      return results;
+    }
+
+    function updateResults() {
+      const results = filterStores(currentQuery, currentCountry);
+      renderList(results);
+      applyMapFilter(results);
+    }
+
+    document.getElementById('search-input').addEventListener('input', function () {
+      currentQuery = this.value;
+      updateResults();
+    });
+
+    document.getElementById('country-filter').addEventListener('change', function () {
+      currentCountry = this.value;
+      updateResults();
+    });
+
+    /* Called by i18n-init.js after every init / language change */
+    window._onI18nUpdate = function () {
+      if (!map) initMap();
+      buildCountryFilter();
+      verdelers.forEach(v => {
+        if (allMarkers[v.id]) allMarkers[v.id].marker.setPopupContent(buildPopup(v));
+      });
+      renderList(filterStores(currentQuery, currentCountry));
+    };
+
+    // Mobile menu
+    (function() {
+      const btn = document.getElementById('nav-hamburger');
+      const menu = document.getElementById('mob-menu');
+      if (!btn || !menu) return;
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const open = menu.classList.toggle('is-open');
+        btn.classList.toggle('is-open', open);
+        btn.setAttribute('aria-expanded', String(open));
+        menu.setAttribute('aria-hidden', String(!open));
+        document.body.style.overflow = open ? 'hidden' : '';
+      });
+      menu.querySelectorAll('.mob-menu-links a').forEach(function(a) {
+        a.addEventListener('click', function() {
+          menu.classList.remove('is-open');
+          btn.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+          menu.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        });
+      });
+      function updateMobLang() {
+        var lang = (typeof i18next !== 'undefined' && i18next.isInitialized)
+          ? i18next.language.split('-')[0]
+          : (localStorage.getItem('miss-chill-lang') || 'en');
+        menu.querySelectorAll('.mob-lang-btn').forEach(function(b) {
+          b.classList.toggle('active', b.dataset.lang === lang);
+        });
+      }
+      menu.querySelectorAll('.mob-lang-btn').forEach(function(b) {
+        b.addEventListener('click', function() {
+          if (typeof setLanguage === 'function') setLanguage(b.dataset.lang);
+          menu.classList.remove('is-open');
+          btn.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+          menu.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        });
+      });
+      var prevHook = window._onI18nUpdate;
+      window._onI18nUpdate = function() {
+        if (typeof prevHook === 'function') prevHook();
+        updateMobLang();
+      };
+      setTimeout(updateMobLang, 300);
+    })();
+  </script>
+
+  <script src="i18n-init.js"></script>
+
+</body>
+</html>

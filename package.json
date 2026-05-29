@@ -1,0 +1,13 @@
+{
+  "name": "miss-chill-website",
+  "version": "1.0.0",
+  "description": "Miss Chill 0.0% Spirits — brand website",
+  "type": "module",
+  "scripts": {
+    "start": "node serve.js",
+    "screenshot": "node screenshot.js http://localhost:3000"
+  },
+  "devDependencies": {
+    "puppeteer": "^24.43.1"
+  }
+}

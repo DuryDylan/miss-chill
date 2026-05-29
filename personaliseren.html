@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personaliseren — Miss Chill 0.0% Spirits</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/i18next@23/dist/umd/i18next.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@8/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+  <style>
+    /* ── DESIGN TOKENS ── */
+    :root {
+      --c-bg:          #FAF2EC;
+      --c-text-alt:    #FAF2EC;
+      --c-placeholder: #2A1520;
+      --c-accent:      #C96B7E;
+      --c-secondary:   #C9A254;
+      --c-dark:        #1C1016;
+      --width:   90vw;
+      --offset:  calc((100vw - var(--width)) / 2);
+    }
+    @media screen and (min-width: 960px) { :root { --width: 95vw; } }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: rgba(0,0,0,0); }
+    blockquote,body,dd,dl,dt,fieldset,figure,
+    h1,h2,h3,h4,h5,h6,hr,html,iframe,legend,
+    li,ol,p,pre,ul { border:none; margin:0; padding:0; }
+    html, body { min-height:100%; width:100%; }
+    html { line-height:1; -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+    body {
+      background-color: var(--c-bg);
+      color: var(--c-placeholder);
+      font-family: 'Bebas Neue', Helvetica, sans-serif;
+      font-size: max(2rem, min(2vw, 3rem));
+      line-height: 100%;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body::-webkit-scrollbar { display: none; }
+    ::selection { background: var(--c-secondary); color: var(--c-accent); }
+    img { max-width:100%; height:auto; display:block; }
+    a { color:inherit; text-decoration:none; }
+
+    /* ══════════════════════════════════════════
+       NAV
+    ══════════════════════════════════════════ */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 1.4rem var(--offset);
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(250,242,236,.95);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,107,126,.08);
+    }
+    .nav-logo img { height: 2.6rem; transition: opacity .3s; }
+    .nav-logo:hover img { opacity: .7; }
+    .nav-links {
+      display: flex; gap: 2.5rem;
+      font-size: 1rem; letter-spacing: .2em;
+      color: var(--c-accent);
+    }
+    .nav-links a:hover { color: var(--c-secondary); }
+    .nav-links a.active { color: var(--c-secondary); border-bottom: 1px solid var(--c-secondary); padding-bottom: 2px; }
+    .lang-selector { position: relative; margin-left: 1.5rem; }
+    .lang-current {
+      background: none; border: 1px solid rgba(201,107,126,.3);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .92rem; font-weight: 600; letter-spacing: .18em;
+      color: var(--c-accent); cursor: pointer;
+      padding: .7rem 1.4rem;
+      transition: border-color .2s, color .2s;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .lang-current:hover { border-color: var(--c-secondary); color: var(--c-secondary); }
+    .lang-current svg { width: .8rem; height: .8rem; opacity: .6; transition: transform .2s; }
+    .lang-selector.open .lang-current svg { transform: rotate(180deg); }
+    .lang-dropdown {
+      position: absolute; top: calc(100% + .6rem); right: 0;
+      background: var(--c-bg); border: 1px solid rgba(201,162,84,.25);
+      min-width: 220px; list-style: none;
+      opacity: 0; pointer-events: none;
+      transform: translateY(-6px); transition: opacity .2s, transform .2s; z-index: 300;
+    }
+    .lang-selector.open .lang-dropdown { opacity: 1; pointer-events: all; transform: none; }
+    .lang-dropdown li:not(:last-child) { border-bottom: 1px solid rgba(201,162,84,.1); }
+    .lang-option {
+      width: 100%; background: none; border: none; text-align: left;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .85rem; font-weight: 600; letter-spacing: .14em;
+      color: var(--c-placeholder); cursor: pointer;
+      padding: 1rem 1.6rem; display: flex; align-items: center; gap: 1rem;
+      transition: color .15s, background .15s;
+    }
+    .lang-option span { font-weight: 400; color: var(--c-secondary); letter-spacing: .05em; font-size: .78rem; }
+    .lang-option:hover { color: var(--c-accent); background: rgba(201,107,126,.04); }
+    .lang-option.active { color: var(--c-accent); }
+    .lang-option.active::after { content: ''; display: block; width: .4rem; height: .4rem; border-radius: 50%; background: var(--c-secondary); margin-left: auto; }
+
+    /* ══════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════ */
+    #pers-hero {
+      padding: 13rem var(--offset) 10rem;
+      background: var(--c-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Decorative gold circle — right side */
+    #pers-hero::before {
+      content: '';
+      position: absolute;
+      right: -12vw; top: 50%;
+      transform: translateY(-50%);
+      width: 60vw; aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid rgba(201,162,84,.06);
+      pointer-events: none;
+    }
+    #pers-hero::after {
+      content: '';
+      position: absolute;
+      right: -6vw; top: 50%;
+      transform: translateY(-50%);
+      width: 44vw; aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid rgba(201,162,84,.04);
+      pointer-events: none;
+    }
+    .pers-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .95rem; font-weight: 700; letter-spacing: .32em;
+      text-transform: uppercase; color: var(--c-secondary);
+      margin-bottom: 2.5rem;
+    }
+    .pers-title {
+      font-size: clamp(5rem, 10.5vw, 14rem);
+      line-height: .85;
+      color: var(--c-text-alt);
+      text-transform: uppercase;
+      letter-spacing: -.01em;
+      margin-bottom: 5rem;
+    }
+    .pers-title .gold { color: var(--c-secondary); }
+    .pers-desc {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem; font-weight: 400; line-height: 1.75;
+      color: rgba(250,242,236,.45);
+      max-width: 56ch;
+    }
+    .pers-stat {
+      display: flex; align-items: baseline; gap: 1.8rem;
+      margin-top: 5.5rem; padding-top: 3.5rem;
+      border-top: 1px solid rgba(201,162,84,.14);
+      max-width: 56ch;
+    }
+    .pers-stat-num {
+      font-size: clamp(5rem, 7vw, 10rem);
+      line-height: 1; color: var(--c-secondary);
+    }
+    .pers-stat-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem; font-weight: 700; letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(250,242,236,.3);
+      line-height: 1.45;
+    }
+
+    /* ══════════════════════════════════════════
+       HOW WE WORK
+    ══════════════════════════════════════════ */
+    #pers-how {
+      padding: 11rem var(--offset) 13rem;
+      background: var(--c-bg);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7rem;
+      align-items: start;
+    }
+    .pers-how-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .9rem; font-weight: 700; letter-spacing: .32em;
+      text-transform: uppercase; color: var(--c-secondary);
+      margin-bottom: 2.5rem;
+    }
+    .pers-how-title {
+      font-size: clamp(3.5rem, 5.5vw, 8rem);
+      line-height: .86;
+      color: var(--c-placeholder);
+      text-transform: uppercase;
+    }
+    .pers-how-right { padding-top: 5rem; }
+    .pers-how-desc {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem; font-weight: 400; line-height: 1.85;
+      color: rgba(42,21,32,.62);
+      margin-bottom: 4rem;
+      border-top: 1px solid rgba(201,162,84,.18);
+      padding-top: 2.5rem;
+    }
+    .pers-cta {
+      display: inline-flex; align-items: center; gap: 1.2rem;
+      font-size: .9rem; letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--c-placeholder);
+      background: var(--c-secondary);
+      padding: 1.5rem 4.5rem;
+      transition: background .25s, color .25s;
+    }
+    .pers-cta:hover { background: var(--c-placeholder); color: var(--c-bg); }
+    .pers-cta:active { opacity: .85; }
+    .pers-cta:focus-visible { outline: 2px solid var(--c-secondary); outline-offset: 4px; }
+
+    @media (max-width: 900px) {
+      #pers-how { grid-template-columns: 1fr; gap: 4rem; }
+      .pers-how-right { padding-top: 0; }
+    }
+
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    #footer {
+      padding: 4rem var(--offset);
+      background: var(--c-dark);
+      border-top: 1px solid rgba(201,162,84,.12);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 2rem;
+    }
+    .footer-logo img { height: 2.4rem; filter: brightness(0) invert(1); opacity: .5; transition: opacity .3s; }
+    .footer-logo:hover img { opacity: .8; }
+    .footer-links {
+      display: flex; gap: 2.2rem; flex-wrap: wrap;
+      font-size: .9rem; letter-spacing: .16em;
+      color: rgba(250,242,236,.3);
+    }
+    .footer-links a:hover { color: var(--c-secondary); }
+    .footer-copy {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .82rem; font-weight: 400; letter-spacing: .1em;
+      color: rgba(250,242,236,.18);
+    }
+
+    /* ══════════════════════════════════════════
+       LANGUAGE MODAL
+    ══════════════════════════════════════════ */
+    #lang-modal {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(28,16,22,.6);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity .35s ease;
+    }
+    #lang-modal.visible { opacity: 1; pointer-events: all; }
+    .lang-modal-card {
+      background: var(--c-bg); border: 1px solid rgba(201,162,84,.2);
+      padding: 3.5rem 3rem 2.5rem; max-width: 520px; width: 92%; text-align: center;
+    }
+    .lang-modal-logo { height: 2.6rem; margin: 0 auto 2rem; }
+    .lang-modal-tagline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .85rem; font-weight: 400; letter-spacing: .28em;
+      text-transform: uppercase; color: var(--c-secondary); margin-bottom: 2.2rem;
+    }
+    .lang-modal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .6rem; margin-bottom: 1.8rem; }
+    .lang-modal-btn {
+      display: flex; flex-direction: column; align-items: center; gap: .25rem;
+      padding: 1rem .5rem; background: none; border: 1px solid rgba(201,162,84,.18); cursor: pointer;
+      transition: border-color .2s, background .2s;
+    }
+    .lang-modal-btn:hover { border-color: var(--c-secondary); background: rgba(201,162,84,.05); }
+    .lang-modal-btn strong { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: .06em; color: var(--c-placeholder); transition: color .2s; }
+    .lang-modal-btn span { font-family: 'Barlow Condensed', sans-serif; font-size: .72rem; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: var(--c-secondary); }
+    .lang-modal-btn:hover strong { color: var(--c-accent); }
+    #lang-modal-skip {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .78rem; letter-spacing: .16em; text-transform: uppercase;
+      color: rgba(42,21,32,.3); cursor: pointer; transition: color .2s; display: inline-block;
+    }
+    #lang-modal-skip:hover { color: var(--c-accent); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s cubic-bezier(.25,.46,.45,.94), transform .9s cubic-bezier(.25,.46,.45,.94); }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: .12s; }
+    .d2 { transition-delay: .24s; }
+    .d3 { transition-delay: .36s; }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════ NAV ══════════ -->
+  <nav id="nav">
+    <a href="index.html" class="nav-logo" aria-label="Miss Chill — home">
+      <img src="brand_assets/Miss Chill Logo.png" alt="Miss Chill">
+    </a>
+    <div class="nav-links" aria-label="Navigation">
+      <a href="index.html#about" data-i18n="nav.story">Story</a>
+      <a href="index.html#products" data-i18n="nav.products">Products</a>
+      <a href="personaliseren.html" class="active" data-i18n="nav.personalize">Personaliseren</a>
+      <a href="contact.html" data-i18n="nav.contact">Contact</a>
+      <a href="vind-een-verdeler.html" data-i18n="nav.find_us">Find Us</a>
+    </div>
+    <div class="lang-selector" role="navigation" aria-label="Language">
+      <button class="lang-current" aria-haspopup="listbox" aria-label="Select language">
+        <span class="lang-current-code">EN</span>
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </button>
+      <ul class="lang-dropdown" role="listbox">
+        <li><button class="lang-option" data-lang="en" role="option">EN <span>English</span></button></li>
+        <li><button class="lang-option" data-lang="nl" role="option">NL <span>Nederlands</span></button></li>
+        <li><button class="lang-option" data-lang="fr" role="option">FR <span>Français</span></button></li>
+        <li><button class="lang-option" data-lang="de" role="option">DE <span>Deutsch</span></button></li>
+        <li><button class="lang-option" data-lang="es" role="option">ES <span>Español</span></button></li>
+        <li><button class="lang-option" data-lang="it" role="option">IT <span>Italiano</span></button></li>
+        <li><button class="lang-option" data-lang="et" role="option">ET <span>Eesti</span></button></li>
+        <li><button class="lang-option" data-lang="pt" role="option">PT <span>Português</span></button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section id="pers-hero" aria-labelledby="pers-title">
+    <p class="pers-eyebrow reveal" data-i18n="personalize.eyebrow">INHOUSE PRODUCTIE · OP MAAT</p>
+    <h1 class="pers-title reveal d1" id="pers-title">
+      <span data-i18n="personalize.title1">PERSONALISEER</span><br>
+      <span class="gold" data-i18n="personalize.title2">JOUW MISS CHILL</span>
+    </h1>
+    <p class="pers-desc reveal d2" data-i18n="personalize.desc">
+      Door onze volledige inhouse productie personaliseren we jouw fles Miss Chill, voor iedere gelegenheid of volgens de branding van je bedrijf. Je kiest je favoriete Miss Chill product of gaat nog een stapje verder met een gepersonaliseerde drank volgens jouw smaakvoorkeuren. Personalisatie kan vanaf een minimum van 200 flessen.
+    </p>
+    <div class="pers-stat reveal d3" aria-label="Minimum bestelling: 200 flessen">
+      <span class="pers-stat-num">200</span>
+      <span class="pers-stat-text" data-i18n="personalize.min_label">Minimum<br>flessen</span>
+    </div>
+  </section>
+
+  <!-- ══════════ HOW WE WORK ══════════ -->
+  <section id="pers-how" aria-labelledby="pers-how-title">
+    <div class="pers-how-left reveal">
+      <p class="pers-how-label" data-i18n="personalize.how_label">HOE GAAN WE TE WERK?</p>
+      <h2 class="pers-how-title" id="pers-how-title">
+        <span data-i18n="personalize.how_title1">VAN JOUW</span><br>
+        <span data-i18n="personalize.how_title2">IDEE NAAR</span><br>
+        <span data-i18n="personalize.how_title3">JOUW FLES</span>
+      </h2>
+    </div>
+    <div class="pers-how-right reveal d1">
+      <p class="pers-how-desc" data-i18n="personalize.how_desc">
+        Jij vraagt het, wij bekijken de mogelijkheden. Miss Chill gaat graag een stapje verder. Vanuit onze rechthoekige fles zoeken we samen naar een mooi resultaat. We gaan aan de slag met jouw voorkeuren en voegen decor, tekst en de look-and-feel toe die jij voor ogen hebt.
+      </p>
+      <a href="contact.html" class="pers-cta">
+        <span data-i18n="personalize.cta">Contacteer ons</span> &nbsp;→
+      </a>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer id="footer">
+    <a href="index.html" class="footer-logo" aria-label="Miss Chill — home">
+      <img src="brand_assets/Miss Chill Logo.png" alt="Miss Chill">
+    </a>
+    <nav class="footer-links" aria-label="Footer navigatie">
+      <a href="index.html#about" data-i18n="footer.story">Story</a>
+      <a href="index.html#products" data-i18n="footer.products">Products</a>
+      <a href="personaliseren.html" data-i18n="nav.personalize">Personaliseren</a>
+      <a href="contact.html" data-i18n="nav.contact">Contact</a>
+      <a href="vind-een-verdeler.html" data-i18n="footer.find_us">Find Us</a>
+    </nav>
+    <p class="footer-copy" data-i18n="footer.copy">© 2026 Miss Chill. All rights reserved. 0.0% Spirits · Belgium</p>
+  </footer>
+
+  <!-- ══════════ LANGUAGE MODAL ══════════ -->
+  <div id="lang-modal" role="dialog" aria-modal="true" aria-label="Language selection">
+    <div class="lang-modal-card">
+      <img src="brand_assets/Miss Chill Logo.png" alt="Miss Chill" class="lang-modal-logo">
+      <p class="lang-modal-tagline" data-i18n="modal.tagline">Choose your language</p>
+      <div class="lang-modal-grid">
+        <button class="lang-modal-btn" data-lang="en"><strong>EN</strong><span>English</span></button>
+        <button class="lang-modal-btn" data-lang="nl"><strong>NL</strong><span>Nederlands</span></button>
+        <button class="lang-modal-btn" data-lang="fr"><strong>FR</strong><span>Français</span></button>
+        <button class="lang-modal-btn" data-lang="de"><strong>DE</strong><span>Deutsch</span></button>
+        <button class="lang-modal-btn" data-lang="es"><strong>ES</strong><span>Español</span></button>
+        <button class="lang-modal-btn" data-lang="it"><strong>IT</strong><span>Italiano</span></button>
+        <button class="lang-modal-btn" data-lang="et"><strong>ET</strong><span>Eesti</span></button>
+        <button class="lang-modal-btn" data-lang="pt"><strong>PT</strong><span>Português</span></button>
+      </div>
+      <p id="lang-modal-skip">Skip</p>
+    </div>
+  </div>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.07, rootMargin: '0px 0px -32px 0px' });
+    reveals.forEach(el => io.observe(el));
+  </script>
+  <script src="translations.js"></script>
+  <script src="i18n-init.js"></script>
+</body>
+</html>
