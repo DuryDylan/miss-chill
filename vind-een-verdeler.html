@@ -532,6 +532,18 @@
       border-radius: 1px;
     }
 
+    /* ── LANGUAGE MODAL — MOBILE ── */
+    @media (max-width: 480px) {
+      .lang-modal-card { padding: 1.8rem 1.2rem 1.5rem; max-height: 92vh; overflow-y: auto; }
+      .lang-modal-logo { height: 3rem; margin-bottom: 1rem; }
+      .lang-modal-tagline { font-size: .72rem; margin-bottom: 1rem; }
+      .lang-modal-grid { gap: .4rem; margin-bottom: 1rem; }
+      .lang-modal-btn { padding: .85rem .3rem; gap: .2rem; }
+      .lang-modal-btn strong { font-size: 1.5rem; }
+      .lang-modal-btn span { font-size: .68rem; letter-spacing: .05em; }
+      #lang-modal-skip { font-size: .72rem; }
+    }
+
     /* ── RESPONSIVE ── */
     /* ═══════════════════════════════════════════
        HAMBURGER & MOBILE NAV
@@ -598,13 +610,25 @@
       .locator-wrap { flex-direction: column; }
       .locator-panel {
         width: 100%; min-width: 0; height: auto; max-height: 55vh;
-        position: relative; z-index: 10;
+        position: relative; z-index: 1100;
       }
-      .panel-search { padding: 1rem 1.4rem; position: relative; z-index: 15; }
-      .filter-wrap { position: relative; z-index: 20; }
-      .panel-results { max-height: 30vh; }
-      .locator-map { flex: none; height: 45vh; min-height: 220px; position: relative; z-index: 1; }
       .panel-header { padding: 1.5rem 1.4rem 1.2rem; }
+      .panel-search {
+        padding: 1rem 1.4rem;
+        position: relative;
+        z-index: 1200;
+      }
+      .filter-wrap {
+        position: relative;
+        z-index: 1300;
+        margin-bottom: .5rem;
+      }
+      #country-filter { position: relative; z-index: 1300; }
+      .panel-results { max-height: 28vh; overflow-y: auto; }
+      .locator-map {
+        flex: none; height: 45vh; min-height: 220px;
+        position: relative; z-index: 1;
+      }
       .store-item { padding: 1.2rem 1.4rem; }
       .store-item:hover, .store-item.active { padding-left: 2rem; }
       .results-meta { padding: .8rem 1.4rem .4rem; }

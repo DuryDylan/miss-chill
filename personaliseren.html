@@ -286,8 +286,85 @@
     .d2 { transition-delay: .24s; }
     .d3 { transition-delay: .36s; }
 
+    /* ── LANGUAGE MODAL — MOBILE ── */
+    @media (max-width: 480px) {
+      .lang-modal-card { padding: 1.8rem 1.2rem 1.5rem; max-height: 92vh; overflow-y: auto; }
+      .lang-modal-logo { height: 3rem; margin-bottom: 1rem; }
+      .lang-modal-tagline { font-size: .72rem; margin-bottom: 1rem; }
+      .lang-modal-grid { gap: .4rem; margin-bottom: 1rem; }
+      .lang-modal-btn { padding: .85rem .3rem; gap: .2rem; }
+      .lang-modal-btn strong { font-size: 1.5rem; }
+      .lang-modal-btn span { font-size: .68rem; letter-spacing: .05em; }
+      #lang-modal-skip { font-size: .72rem; }
+    }
+
+    /* ═══════════════════════════════════════════
+       HAMBURGER & MOBILE NAV
+    ═══════════════════════════════════════════ */
+    .nav-hamburger {
+      display: none;
+      background: none; border: none; cursor: pointer;
+      padding: .5rem; flex-direction: column; gap: 5px;
+      z-index: 600; position: relative;
+      color: var(--c-accent);
+    }
+    .ham-line {
+      display: block;
+      width: 24px; height: 1.5px;
+      background: currentColor;
+      transition: transform .3s cubic-bezier(.25,.46,.45,.94), opacity .3s;
+      transform-origin: center;
+    }
+    .nav-hamburger.is-open .ham-line:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.is-open .ham-line:nth-child(2) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mob-menu {
+      position: fixed; inset: 0; z-index: 500;
+      background: var(--c-dark);
+      display: flex; flex-direction: column;
+      padding: 6.5rem 2rem 3rem;
+      opacity: 0; pointer-events: none;
+      transform: translateY(-8px);
+      transition: opacity .3s ease, transform .3s ease;
+      overflow-y: auto;
+    }
+    .mob-menu.is-open { opacity: 1; pointer-events: all; transform: none; }
+    .mob-menu-links { display: flex; flex-direction: column; flex: 1; }
+    .mob-menu-links a {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.6rem, 12vw, 4rem);
+      letter-spacing: .05em; text-transform: uppercase;
+      color: rgba(250,242,236,.75);
+      border-bottom: 1px solid rgba(201,162,84,.12);
+      padding: .85rem 0;
+      transition: color .2s, padding-left .2s;
+      display: block;
+    }
+    .mob-menu-links a:hover,
+    .mob-menu-links a.active { color: var(--c-secondary); padding-left: .5rem; }
+    .mob-lang-row {
+      display: flex; flex-wrap: wrap; gap: .5rem;
+      padding-top: 2rem; margin-top: auto;
+      border-top: 1px solid rgba(201,162,84,.1);
+    }
+    .mob-lang-btn {
+      background: none; border: 1px solid rgba(201,162,84,.2);
+      color: rgba(250,242,236,.45);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .8rem; font-weight: 700; letter-spacing: .14em;
+      padding: .55rem 1rem; cursor: pointer;
+      transition: border-color .2s, color .2s, background .2s;
+    }
+    .mob-lang-btn.active, .mob-lang-btn:hover {
+      border-color: var(--c-secondary); color: rgba(250,242,236,.9);
+      background: rgba(201,162,84,.06);
+    }
+
     /* ── RESPONSIVE ≤ 768px ── */
     @media (max-width: 768px) {
+      .nav-links, .lang-selector { display: none !important; }
+      .nav-hamburger { display: flex; }
+
       #pers-hero { padding: 9rem 1.4rem 6rem; }
       .pers-title { font-size: clamp(2.4rem, 9.5vw, 5rem); letter-spacing: -.01em; }
       .pers-desc { font-size: .95rem; max-width: 100%; }
@@ -331,7 +408,32 @@
         <li><button class="lang-option" data-lang="pt" role="option">PT <span>Português</span></button></li>
       </ul>
     </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+      <span class="ham-line"></span>
+      <span class="ham-line"></span>
+    </button>
   </nav>
+
+  <!-- ══════════ MOBILE MENU ══════════ -->
+  <div class="mob-menu" id="mob-menu" aria-hidden="true">
+    <nav class="mob-menu-links">
+      <a href="index.html#about" data-i18n="nav.story">Verhaal</a>
+      <a href="index.html#products" data-i18n="nav.products">Producten</a>
+      <a href="personaliseren.html" class="active" data-i18n="nav.personalize">Personaliseren</a>
+      <a href="contact.html" data-i18n="nav.contact">Contact</a>
+      <a href="vind-een-verdeler.html" data-i18n="nav.find_us">Vind Ons</a>
+    </nav>
+    <div class="mob-lang-row">
+      <button class="mob-lang-btn" data-lang="en">EN</button>
+      <button class="mob-lang-btn" data-lang="nl">NL</button>
+      <button class="mob-lang-btn" data-lang="fr">FR</button>
+      <button class="mob-lang-btn" data-lang="de">DE</button>
+      <button class="mob-lang-btn" data-lang="es">ES</button>
+      <button class="mob-lang-btn" data-lang="it">IT</button>
+      <button class="mob-lang-btn" data-lang="et">ET</button>
+      <button class="mob-lang-btn" data-lang="pt">PT</button>
+    </div>
+  </div>
 
   <!-- ══════════ HERO ══════════ -->
   <section id="pers-hero" aria-labelledby="pers-title">
@@ -412,6 +514,54 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.07, rootMargin: '0px 0px -32px 0px' });
     reveals.forEach(el => io.observe(el));
+
+    // Mobile menu
+    (function() {
+      const btn = document.getElementById('nav-hamburger');
+      const menu = document.getElementById('mob-menu');
+      if (!btn || !menu) return;
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const open = menu.classList.toggle('is-open');
+        btn.classList.toggle('is-open', open);
+        btn.setAttribute('aria-expanded', String(open));
+        menu.setAttribute('aria-hidden', String(!open));
+        document.body.style.overflow = open ? 'hidden' : '';
+      });
+      menu.querySelectorAll('.mob-menu-links a').forEach(function(a) {
+        a.addEventListener('click', function() {
+          menu.classList.remove('is-open');
+          btn.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+          menu.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        });
+      });
+      function updateMobLang() {
+        var lang = (typeof i18next !== 'undefined' && i18next.isInitialized)
+          ? i18next.language.split('-')[0]
+          : (localStorage.getItem('miss-chill-lang') || 'en');
+        menu.querySelectorAll('.mob-lang-btn').forEach(function(b) {
+          b.classList.toggle('active', b.dataset.lang === lang);
+        });
+      }
+      menu.querySelectorAll('.mob-lang-btn').forEach(function(b) {
+        b.addEventListener('click', function() {
+          if (typeof setLanguage === 'function') setLanguage(b.dataset.lang);
+          menu.classList.remove('is-open');
+          btn.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+          menu.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        });
+      });
+      var prevHook = window._onI18nUpdate;
+      window._onI18nUpdate = function() {
+        if (typeof prevHook === 'function') prevHook();
+        updateMobLang();
+      };
+      setTimeout(updateMobLang, 300);
+    })();
   </script>
   <script src="translations.js"></script>
   <script src="i18n-init.js"></script>
