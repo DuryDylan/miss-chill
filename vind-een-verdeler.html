@@ -606,37 +606,73 @@
     }
 
     @media (max-width: 768px) {
+      /* Make page fully scrollable on mobile */
+      html, body { overflow-x: hidden; overflow-y: auto; height: auto; }
+
       .nav-links, .lang-selector { display: none !important; }
       .nav-hamburger { display: flex; }
 
-      .locator-wrap { flex-direction: column; }
-      .locator-panel {
-        width: 100%; min-width: 0; height: auto; max-height: 55vh;
-        position: relative; z-index: 1100;
+      /* Locator: normal flow below fixed nav, scrollable column */
+      .locator-wrap {
+        position: relative;
+        top: 0; left: auto; right: auto; bottom: auto;
+        display: flex;
+        flex-direction: column;
+        margin-top: 5.5rem;
+        height: auto;
         overflow: visible;
       }
-      .panel-header { padding: 1.5rem 1.4rem 1.2rem; }
+
+      /* Dissolve panel box — children become direct flex items of locator-wrap */
+      .locator-panel { display: contents; }
+
+      /* Order: header (1) → search (2) → map (3) → meta (4) → results (5) */
+      .panel-header {
+        order: 1;
+        background: var(--c-dark);
+        border-bottom: 1px solid rgba(201,162,84,.08);
+        padding: 1.5rem 1.4rem 1.2rem;
+        flex-shrink: 0;
+      }
       .panel-search {
+        order: 2;
+        background: var(--c-dark);
         padding: 1rem 1.4rem;
+        border-bottom: 1px solid rgba(201,162,84,.07);
         position: relative;
         z-index: 1200;
-        margin-bottom: 25px;
         overflow: visible;
+        flex-shrink: 0;
       }
-      .filter-wrap {
-        position: relative;
-        z-index: 9999;
-        margin-bottom: 0;
-        overflow: visible;
-      }
-      #country-filter { position: relative; z-index: 9999; }
-      .panel-results { max-height: 28vh; overflow-y: auto; }
       .locator-map {
-        flex: none; height: 45vh; min-height: 220px;
-        position: relative; z-index: 1;
+        order: 3;
+        flex: none;
+        height: 350px;
+        min-height: 0;
+        position: relative;
+        z-index: 1;
       }
+      .results-meta {
+        order: 4;
+        background: var(--c-dark);
+        padding: .8rem 1.4rem .4rem;
+        flex-shrink: 0;
+      }
+      .panel-results {
+        order: 5;
+        background: var(--c-dark);
+        max-height: none;
+        overflow-y: visible;
+        flex: none;
+      }
+
+      .filter-wrap { position: relative; z-index: 9999; overflow: visible; }
+      #country-filter { position: relative; z-index: 9999; }
+
+      /* Fix store text overflow */
       .store-item { padding: 1.2rem 1.4rem; }
       .store-item:hover, .store-item.active { padding-left: 2rem; }
+      .store-name { overflow-wrap: break-word; word-break: break-word; }
       .results-meta { padding: .8rem 1.4rem .4rem; }
     }
   </style>
@@ -915,7 +951,13 @@
     function initMap() {
       if (map) return;
 
-      map = L.map('map', { center: [50.85, 4.35], zoom: 7, zoomControl: false });
+      const isMobile = window.innerWidth <= 768;
+      map = L.map('map', {
+        center: [50.85, 4.35], zoom: 7, zoomControl: false,
+        scrollWheelZoom: !isMobile,
+        dragging: !isMobile,
+        tap: false
+      });
 
       L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
