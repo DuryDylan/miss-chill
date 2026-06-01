@@ -613,19 +613,23 @@
       .locator-panel {
         width: 100%; min-width: 0; height: auto; max-height: 55vh;
         position: relative; z-index: 1100;
+        overflow: visible;
       }
       .panel-header { padding: 1.5rem 1.4rem 1.2rem; }
       .panel-search {
         padding: 1rem 1.4rem;
         position: relative;
         z-index: 1200;
+        margin-bottom: 25px;
+        overflow: visible;
       }
       .filter-wrap {
         position: relative;
-        z-index: 1300;
-        margin-bottom: .5rem;
+        z-index: 9999;
+        margin-bottom: 0;
+        overflow: visible;
       }
-      #country-filter { position: relative; z-index: 1300; }
+      #country-filter { position: relative; z-index: 9999; }
       .panel-results { max-height: 28vh; overflow-y: auto; }
       .locator-map {
         flex: none; height: 45vh; min-height: 220px;
