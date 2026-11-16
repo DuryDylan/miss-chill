@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="nl" data-lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Verborgen pagina: niet indexeren, niet volgen, niet in sitemap, niet gelinkt -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" type="image/png" href="brand_assets/favicon.png">
+  <title>Privacy Policy · Sir Chill ERP App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --c-bg:      #F6F1EA;
+      --c-ink:     #1E1A17;
+      --c-muted:   rgba(30,26,23,.68);
+      --c-gold:    #B8924A;
+      --c-dark:    #141210;
+      --c-light:   #F6F1EA;
+      --width:  90vw;
+      --offset: calc((100vw - var(--width)) / 2);
+    }
+    @media (min-width: 960px) { :root { --width: 68vw; } }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body {
+      background: var(--c-bg);
+      color: var(--c-ink);
+      font-family: 'Barlow Condensed', Helvetica, Arial, sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: var(--c-gold); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+    a:hover { opacity: .75; }
+    a:active { opacity: .55; }
+
+    /* Taalweergave */
+    html[data-lang="nl"] [lang="en"]:not(html) { display: none; }
+    html[data-lang="en"] [lang="nl"]:not(html) { display: none; }
+
+    /* ── HEADER ── */
+    #hero {
+      position: relative;
+      padding: 7rem var(--offset) 5rem;
+      background: var(--c-dark);
+      color: var(--c-light);
+      overflow: hidden;
+    }
+    #hero::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .07;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .topbar {
+      position: relative; z-index: 1;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      margin-bottom: 4.5rem;
+    }
+    .wordmark {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem; letter-spacing: .22em; color: var(--c-light);
+    }
+    .lang-switch { display: flex; border: 1px solid rgba(184,146,74,.45); }
+    .lang-switch button {
+      font: 700 .82rem/1 'Barlow Condensed', sans-serif;
+      letter-spacing: .2em; text-transform: uppercase;
+      padding: .7rem 1rem; border: 0; cursor: pointer;
+      background: transparent; color: rgba(246,241,234,.6);
+      transition: opacity .2s, transform .15s;
+    }
+    .lang-switch button:hover { opacity: .8; color: var(--c-light); }
+    .lang-switch button:active { transform: scale(.94); }
+    .lang-switch button[aria-pressed="true"] { background: var(--c-gold); color: var(--c-dark); }
+
+    .eyebrow {
+      position: relative; z-index: 1;
+      font-weight: 700; font-size: .85rem; letter-spacing: .3em;
+      text-transform: uppercase; color: var(--c-gold); margin-bottom: 1.2rem;
+    }
+    h1 {
+      position: relative; z-index: 1;
+      font-family: 'Bebas Neue', sans-serif; font-weight: 400;
+      font-size: clamp(3.2rem, 8vw, 7.5rem); line-height: .9;
+      letter-spacing: -.005em; margin-bottom: 1.8rem;
+    }
+    .meta { position: relative; z-index: 1; font-size: .92rem; letter-spacing: .06em; color: rgba(246,241,234,.5); }
+
+    /* ── CONTENT ── */
+    main { padding: 5rem var(--offset) 7rem; }
+    .toc {
+      margin-bottom: 4.5rem; padding: 2rem 2.4rem;
+      background: #fff; border: 1px solid rgba(184,146,74,.25);
+      box-shadow: 0 1px 2px rgba(20,18,16,.04), 0 8px 24px rgba(20,18,16,.05);
+    }
+    .toc p { font-weight: 700; font-size: .8rem; letter-spacing: .24em; text-transform: uppercase; color: var(--c-gold); margin-bottom: .8rem; }
+    .toc ol { margin: 0; padding-left: 1.3rem; columns: 2; column-gap: 2.5rem; }
+    .toc li { padding: .1rem 0; break-inside: avoid; }
+    .toc a { color: var(--c-ink); text-decoration: none; }
+    .toc a:hover { color: var(--c-gold); opacity: 1; }
+
+    section.s {
+      padding: 0 0 3.5rem; margin-bottom: 3.5rem;
+      border-bottom: 1px solid rgba(184,146,74,.2);
+      scroll-margin-top: 2rem;
+    }
+    section.s:last-of-type { border-bottom: 0; margin-bottom: 0; }
+    .num { font-family: 'Bebas Neue', sans-serif; font-size: 1.05rem; letter-spacing: .14em; color: var(--c-gold); }
+    h2 {
+      font-family: 'Bebas Neue', sans-serif; font-weight: 400;
+      font-size: clamp(1.9rem, 3.4vw, 3rem); line-height: .95;
+      margin: .3rem 0 1.4rem;
+    }
+    h3 { font-weight: 700; font-size: 1.05rem; letter-spacing: .04em; margin: 1.4rem 0 .4rem; }
+    main p { color: var(--c-muted); max-width: 74ch; margin-bottom: 1rem; }
+    main ul { list-style: none; margin-bottom: 1rem; max-width: 74ch; }
+    main ul li { color: var(--c-muted); padding: .2rem 0 .2rem 1.3rem; position: relative; }
+    main ul li::before { content: ''; position: absolute; left: 0; top: 1.05rem; width: .6rem; height: 1px; background: var(--c-gold); }
+    strong { color: var(--c-ink); font-weight: 600; }
+    .note {
+      padding: 1.2rem 1.5rem; margin: 1.2rem 0; max-width: 74ch;
+      background: rgba(184,146,74,.07); border-left: 2px solid var(--c-gold);
+    }
+    .note p { margin: 0; }
+    .card {
+      display: inline-block; margin-top: 1rem; padding: 1.8rem 2.4rem;
+      background: #fff; border: 1px solid rgba(184,146,74,.25);
+      box-shadow: 0 1px 2px rgba(20,18,16,.04), 0 8px 24px rgba(20,18,16,.05);
+    }
+    .card .label { font-weight: 700; font-size: .78rem; letter-spacing: .22em; text-transform: uppercase; color: var(--c-gold); margin-bottom: .5rem; }
+    .card p { margin: 0; }
+
+    footer {
+      padding: 2.5rem var(--offset);
+      background: var(--c-dark); color: rgba(246,241,234,.45);
+      font-size: .85rem; letter-spacing: .1em;
+    }
+
+    @media (max-width: 720px) {
+      #hero { padding: 2.5rem 16px 3.5rem; }
+      .topbar { margin-bottom: 3rem; }
+      .wordmark { font-size: 1.3rem; }
+      main { padding: 3rem 16px 5rem; }
+      footer { padding: 2rem 16px; }
+      .toc { padding: 1.5rem 1.4rem; }
+      .toc ol { columns: 1; }
+      .card { padding: 1.4rem 1.5rem; display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="hero">
+    <div class="topbar">
+      <span class="wordmark">SIR CHILL</span>
+      <div class="lang-switch" role="group" aria-label="Language / Taal">
+        <button type="button" data-set-lang="nl" aria-pressed="true">NL</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+    <p class="eyebrow"><span lang="nl">Sir Chill ERP · iOS &amp; Android</span><span lang="en">Sir Chill ERP · iOS &amp; Android</span></p>
+    <h1><span lang="nl">Privacybeleid</span><span lang="en">Privacy Policy</span></h1>
+    <p class="meta">
+      <span lang="nl">Ingangsdatum: 16 november 2026 · Van toepassing op de Sir Chill ERP-app voor Apple iOS/iPadOS en Google Android</span>
+      <span lang="en">Effective date: 16 November 2026 · Applies to the Sir Chill ERP app for Apple iOS/iPadOS and Google Android</span>
+    </p>
+  </header>
+
+  <main>
+
+    <nav class="toc" aria-label="Inhoud / Contents">
+      <p><span lang="nl">Inhoud</span><span lang="en">Contents</span></p>
+      <ol>
+        <li><a href="#s1"><span lang="nl">Wie zijn wij</span><span lang="en">Who we are</span></a></li>
+        <li><a href="#s2"><span lang="nl">Welke gegevens</span><span lang="en">Data we collect</span></a></li>
+        <li><a href="#s3"><span lang="nl">Doeleinden &amp; rechtsgronden</span><span lang="en">Purposes &amp; legal bases</span></a></li>
+        <li><a href="#s4"><span lang="nl">Toestemmingen op uw toestel</span><span lang="en">Device permissions</span></a></li>
+        <li><a href="#s5"><span lang="nl">Geen tracking of reclame</span><span lang="en">No tracking or advertising</span></a></li>
+        <li><a href="#s6"><span lang="nl">Delen met derden</span><span lang="en">Sharing with third parties</span></a></li>
+        <li><a href="#s7"><span lang="nl">Doorgifte buiten de EER</span><span lang="en">Transfers outside the EEA</span></a></li>
+        <li><a href="#s8"><span lang="nl">Bewaartermijnen</span><span lang="en">Retention</span></a></li>
+        <li><a href="#s9"><span lang="nl">Beveiliging</span><span lang="en">Security</span></a></li>
+        <li><a href="#delete"><span lang="nl">Account &amp; gegevens verwijderen</span><span lang="en">Account &amp; data deletion</span></a></li>
+        <li><a href="#s11"><span lang="nl">Uw rechten</span><span lang="en">Your rights</span></a></li>
+        <li><a href="#s12"><span lang="nl">Minderjarigen</span><span lang="en">Children</span></a></li>
+        <li><a href="#s13"><span lang="nl">Wijzigingen</span><span lang="en">Changes</span></a></li>
+        <li><a href="#s14"><span lang="nl">Contact</span><span lang="en">Contact</span></a></li>
+      </ol>
+    </nav>
+
+    <!-- 01 -->
+    <section class="s" id="s1">
+      <p class="num">01</p>
+      <div lang="nl">
+        <h2>Wie zijn wij?</h2>
+        <p>De Sir Chill ERP-app (de "App") wordt aangeboden door <strong>Sir Chill BV</strong>, een vennootschap naar Belgisch recht, gevestigd in België ("Sir Chill", "wij", "ons"). Sir Chill BV is de verwerkingsverantwoordelijke voor de persoonsgegevens die via de App worden verwerkt.</p>
+        <p>De App is een interne bedrijfstoepassing (Enterprise Resource Planning) voor het beheer van onder meer klanten, verdelers, bestellingen, voorraad, leveringen en facturatie. De App is uitsluitend bedoeld voor medewerkers, partners en verdelers van Sir Chill die door ons een account hebben gekregen. De App is niet bedoeld voor consumenten.</p>
+        <p>Dit privacybeleid geldt voor de App zoals verspreid via de Apple App Store en Google Play, en is opgesteld in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG/GDPR), de Belgische privacywetgeving en de richtlijnen van Apple en Google.</p>
+      </div>
+      <div lang="en">
+        <h2>Who we are</h2>
+        <p>The Sir Chill ERP app (the "App") is provided by <strong>Sir Chill BV</strong>, a company incorporated under Belgian law and established in Belgium ("Sir Chill", "we", "us"). Sir Chill BV is the data controller for personal data processed through the App.</p>
+        <p>The App is an internal business application (Enterprise Resource Planning) used to manage customers, distributors, orders, inventory, deliveries and invoicing, among other things. The App is intended exclusively for Sir Chill employees, partners and distributors who have been issued an account by us. The App is not intended for consumers.</p>
+        <p>This privacy policy applies to the App as distributed through the Apple App Store and Google Play, and has been drawn up in accordance with the EU General Data Protection Regulation (GDPR), Belgian privacy law and the requirements of Apple and Google.</p>
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section class="s" id="s2">
+      <p class="num">02</p>
+      <div lang="nl">
+        <h2>Welke gegevens verzamelen wij?</h2>
+        <h3>a. Accountgegevens</h3>
+        <ul>
+          <li>Naam, zakelijk e-mailadres, telefoonnummer, functie/rol en bedrijfsnaam</li>
+          <li>Inloggegevens (wachtwoorden worden uitsluitend versleuteld/gehasht opgeslagen) en sessietokens</li>
+        </ul>
+        <h3>b. Bedrijfsgegevens die u invoert</h3>
+        <ul>
+          <li>Gegevens van klanten, verdelers en contactpersonen (naam, bedrijf, adres, e-mail, telefoon, btw-nummer)</li>
+          <li>Bestellingen, offertes, facturen, leveringen, voorraad- en productgegevens</li>
+          <li>Notities en opmerkingen bij bestellingen, klanten of leveringen</li>
+        </ul>
+        <h3>c. Technische en gebruiksgegevens</h3>
+        <ul>
+          <li>Toesteltype, besturingssysteem en versie, app-versie, taalinstelling</li>
+          <li>IP-adres, tijdstippen van aanmelding en gebruikte functies (audit-logs, voor beveiliging)</li>
+          <li>Een token voor pushmeldingen, als u meldingen toestaat (zie hieronder)</li>
+        </ul>
+        <h3>d. Pushmeldingen</h3>
+        <p>De App stuurt pushmeldingen, bijvoorbeeld bij een nieuwe of gewijzigde bestelling. Daarvoor bewaren wij een uniek token van uw toestel. Een melding bevat enkel de informatie die nodig is om u op de hoogte te brengen, zoals een bestelnummer of korte omschrijving.</p>
+        <h3>e. Wat wij niet verzamelen</h3>
+        <p>De App heeft geen toegang tot uw camera, foto's, microfoon, contacten of locatie. Wij verzamelen geen gezondheidsgegevens, biometrische gegevens, browsegeschiedenis of betaalkaartgegevens via de App.</p>
+      </div>
+      <div lang="en">
+        <h2>Data we collect</h2>
+        <h3>a. Account data</h3>
+        <ul>
+          <li>Name, business email address, phone number, job title/role and company name</li>
+          <li>Login credentials (passwords are only stored encrypted/hashed) and session tokens</li>
+        </ul>
+        <h3>b. Business data you enter</h3>
+        <ul>
+          <li>Details of customers, distributors and contact persons (name, company, address, email, phone, VAT number)</li>
+          <li>Orders, quotes, invoices, deliveries, inventory and product data</li>
+          <li>Notes and comments on orders, customers or deliveries</li>
+        </ul>
+        <h3>c. Technical and usage data</h3>
+        <ul>
+          <li>Device model, operating system and version, app version, language setting</li>
+          <li>IP address, sign-in times and features used (audit logs, for security purposes)</li>
+          <li>A push notification token, if you allow notifications (see below)</li>
+        </ul>
+        <h3>d. Push notifications</h3>
+        <p>The App sends push notifications, for example when an order is placed or changed. To do so, we store a unique token for your device. A notification only contains the information needed to inform you, such as an order number or a short description.</p>
+        <h3>e. What we do not collect</h3>
+        <p>The App has no access to your camera, photos, microphone, contacts or location. We do not collect health data, biometric data, browsing history or payment card data through the App.</p>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section class="s" id="s3">
+      <p class="num">03</p>
+      <div lang="nl">
+        <h2>Doeleinden &amp; rechtsgronden</h2>
+        <ul>
+          <li><strong>Toegang en accountbeheer:</strong> u aanmelden, uw rol en rechten beheren (uitvoering van overeenkomst / gerechtvaardigd belang)</li>
+          <li><strong>Bedrijfsvoering:</strong> bestellingen, voorraad, leveringen, klanten- en verdelersbeheer en facturatie verwerken (uitvoering van overeenkomst)</li>
+          <li><strong>Beveiliging en fraudepreventie:</strong> misbruik detecteren, audit-logs bijhouden (gerechtvaardigd belang)</li>
+          <li><strong>Stabiliteit en ondersteuning:</strong> fouten oplossen en support verlenen (gerechtvaardigd belang)</li>
+          <li><strong>Meldingen:</strong> u op de hoogte brengen van nieuwe of gewijzigde bestellingen (toestemming, intrekbaar via toestelinstellingen)</li>
+          <li><strong>Wettelijke verplichtingen:</strong> o.a. boekhoudkundige en fiscale bewaarplicht (wettelijke verplichting)</li>
+        </ul>
+        <p>Wij gebruiken uw gegevens niet voor geautomatiseerde besluitvorming of profilering met rechtsgevolgen.</p>
+      </div>
+      <div lang="en">
+        <h2>Purposes &amp; legal bases</h2>
+        <ul>
+          <li><strong>Access and account management:</strong> signing you in, managing your role and permissions (performance of contract / legitimate interest)</li>
+          <li><strong>Business operations:</strong> processing orders, inventory, deliveries, customer and distributor management, and invoicing (performance of contract)</li>
+          <li><strong>Security and fraud prevention:</strong> detecting misuse, keeping audit logs (legitimate interest)</li>
+          <li><strong>Stability and support:</strong> fixing bugs and providing support (legitimate interest)</li>
+          <li><strong>Notifications:</strong> informing you of new or changed orders (consent, withdrawable in your device settings)</li>
+          <li><strong>Legal obligations:</strong> including accounting and tax retention requirements (legal obligation)</li>
+        </ul>
+        <p>We do not use your data for automated decision-making or profiling that produces legal effects.</p>
+      </div>
+    </section>
+
+    <!-- 04 -->
+    <section class="s" id="s4">
+      <p class="num">04</p>
+      <div lang="nl">
+        <h2>Toestemmingen op uw toestel</h2>
+        <p>De enige toestemming die de App vraagt, is die voor pushmeldingen. Die toestemming is optioneel: weigert u, dan blijft de App volledig werken, maar ontvangt u geen meldingen. U kunt dit op elk moment wijzigen via <em>Instellingen</em> op uw iPhone/iPad of Android-toestel.</p>
+      </div>
+      <div lang="en">
+        <h2>Device permissions</h2>
+        <p>The only permission the App requests is for push notifications. This permission is optional: if you decline, the App keeps working fully, but you will not receive notifications. You can change this at any time in <em>Settings</em> on your iPhone/iPad or Android device.</p>
+      </div>
+    </section>
+
+    <!-- 05 -->
+    <section class="s" id="s5">
+      <p class="num">05</p>
+      <div lang="nl">
+        <h2>Geen tracking of reclame</h2>
+        <ul>
+          <li>De App bevat geen advertenties en geen advertentie-SDK's.</li>
+          <li>Wij volgen u niet over apps en websites van andere bedrijven heen ("tracking" in de zin van Apple's App Tracking Transparency) en gebruiken geen advertentie-ID (IDFA / Android Advertising ID).</li>
+          <li>Wij verkopen of verhuren uw persoonsgegevens nooit aan derden.</li>
+        </ul>
+      </div>
+      <div lang="en">
+        <h2>No tracking or advertising</h2>
+        <ul>
+          <li>The App contains no advertising and no advertising SDKs.</li>
+          <li>We do not track you across apps and websites owned by other companies ("tracking" as defined by Apple's App Tracking Transparency) and do not use the advertising identifier (IDFA / Android Advertising ID).</li>
+          <li>We never sell or rent your personal data to third parties.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 06 -->
+    <section class="s" id="s6">
+      <p class="num">06</p>
+      <div lang="nl">
+        <h2>Delen met derden</h2>
+        <p>Wij delen persoonsgegevens alleen wanneer dat nodig is, met:</p>
+        <ul>
+          <li><strong>Apple en Google</strong>, uitsluitend om pushmeldingen af te leveren via de Apple Push Notification service (iOS) en Firebase Cloud Messaging (Android). Zij ontvangen daarvoor enkel het toesteltoken en de inhoud van de melding.</li>
+          <li><strong>Collega's binnen uw organisatie</strong> met de juiste rol/rechten in de App, voor zover nodig voor hun taken.</li>
+          <li><strong>Boekhouder, accountant of bevoegde overheidsinstanties</strong>, wanneer dit wettelijk vereist is.</li>
+        </ul>
+        <p>Apple en Google verwerken bij het downloaden en updaten van de App bepaalde gegevens onder hun eigen privacybeleid; daarop hebben wij geen invloed.</p>
+        <p>Wij maken momenteel geen gebruik van externe diensten voor hosting, analyse of crashrapportage. Schakelen wij in de toekomst zo'n dienst in, dan passen wij dit privacybeleid vooraf aan en sluiten wij met die partij een verwerkersovereenkomst.</p>
+      </div>
+      <div lang="en">
+        <h2>Sharing with third parties</h2>
+        <p>We only share personal data where necessary, with:</p>
+        <ul>
+          <li><strong>Apple and Google</strong>, solely to deliver push notifications via the Apple Push Notification service (iOS) and Firebase Cloud Messaging (Android). For this they only receive the device token and the content of the notification.</li>
+          <li><strong>Colleagues within your organisation</strong> who have the appropriate role/permissions in the App, insofar as needed for their work.</li>
+          <li><strong>Our bookkeeper, accountant or competent authorities</strong>, where required by law.</li>
+        </ul>
+        <p>Apple and Google process certain data under their own privacy policies when you download and update the App; we have no control over that processing.</p>
+        <p>We currently do not use any external services for hosting, analytics or crash reporting. If we engage such a service in the future, we will update this privacy policy beforehand and sign a data processing agreement with that party.</p>
+      </div>
+    </section>
+
+    <!-- 07 -->
+    <section class="s" id="s7">
+      <p class="num">07</p>
+      <div lang="nl">
+        <h2>Doorgifte buiten de EER</h2>
+        <p>Wij geven uw gegevens niet door buiten de Europese Economische Ruimte. De enige uitzondering zijn pushmeldingen: Apple en Google kunnen het toesteltoken en de inhoud van een melding buiten de EER verwerken. Zij doen dit met passende waarborgen, zoals het EU-VS Data Privacy Framework of de Standaardcontractbepalingen van de Europese Commissie.</p>
+      </div>
+      <div lang="en">
+        <h2>Transfers outside the EEA</h2>
+        <p>We do not transfer your data outside the European Economic Area. The only exception is push notifications: Apple and Google may process the device token and the content of a notification outside the EEA. They do so with appropriate safeguards, such as the EU-US Data Privacy Framework or the European Commission's Standard Contractual Clauses.</p>
+      </div>
+    </section>
+
+    <!-- 08 -->
+    <section class="s" id="s8">
+      <p class="num">08</p>
+      <div lang="nl">
+        <h2>Bewaartermijnen</h2>
+        <ul>
+          <li>Accountgegevens: zolang uw account actief is, en maximaal 30 dagen na verwijdering van het account</li>
+          <li>Boekhoudkundige gegevens (facturen, bestellingen): 10 jaar, conform de Belgische boekhoud- en fiscale wetgeving</li>
+          <li>Audit- en beveiligingslogs: maximaal 12 maanden</li>
+          <li>Token voor pushmeldingen: tot u uitlogt, meldingen uitschakelt of uw account verwijdert</li>
+        </ul>
+      </div>
+      <div lang="en">
+        <h2>Retention</h2>
+        <ul>
+          <li>Account data: as long as your account is active, and up to 30 days after account deletion</li>
+          <li>Accounting data (invoices, orders): 10 years, in line with Belgian accounting and tax law</li>
+          <li>Audit and security logs: up to 12 months</li>
+          <li>Push notification token: until you sign out, disable notifications or delete your account</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 09 -->
+    <section class="s" id="s9">
+      <p class="num">09</p>
+      <div lang="nl">
+        <h2>Beveiliging</h2>
+        <p>Alle communicatie tussen de App en onze servers is versleuteld via HTTPS/TLS. Gegevens worden versleuteld opgeslagen, toegang is beperkt op basis van rollen, en wachtwoorden worden nooit leesbaar bewaard. Gevoelige gegevens op uw toestel worden bewaard in de beveiligde opslag van het besturingssysteem (iOS Keychain / Android Keystore). Bij een datalek dat risico's inhoudt, verwittigen wij de Gegevensbeschermingsautoriteit en, waar vereist, de betrokkenen.</p>
+      </div>
+      <div lang="en">
+        <h2>Security</h2>
+        <p>All communication between the App and our servers is encrypted using HTTPS/TLS. Data is stored encrypted, access is restricted based on roles, and passwords are never stored in readable form. Sensitive data on your device is kept in the operating system's secure storage (iOS Keychain / Android Keystore). In the event of a data breach posing a risk, we notify the Belgian Data Protection Authority and, where required, the individuals concerned.</p>
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section class="s" id="delete">
+      <p class="num">10</p>
+      <div lang="nl">
+        <h2>Account &amp; gegevens verwijderen</h2>
+        <p>U kunt op elk moment vragen om uw account en de bijbehorende persoonsgegevens te verwijderen:</p>
+        <ul>
+          <li><strong>In de App:</strong> ga naar <em>Profiel</em> en kies <em>Account verwijderen</em>, of</li>
+          <li><strong>Per e-mail:</strong> stuur een bericht naar <a href="mailto:info@sirchillgin.be?subject=Verwijderen%20ERP-account">info@sirchillgin.be</a> met als onderwerp "Verwijderen ERP-account", vanaf het e-mailadres dat aan uw account gekoppeld is.</li>
+        </ul>
+        <p>Wij bevestigen uw verzoek en verwijderen uw account en persoonsgegevens binnen 30 dagen. Gegevens die wij wettelijk moeten bewaren (bijv. facturen) worden niet gewist maar afgeschermd en enkel voor die wettelijke verplichting bewaard. Het verwijderen van de App van uw toestel verwijdert uw account niet.</p>
+        <div class="note"><p>U kunt ook enkel bepaalde gegevens laten verwijderen zonder uw volledige account op te heffen. Vermeld dit dan in uw e-mail.</p></div>
+      </div>
+      <div lang="en">
+        <h2>Account &amp; data deletion</h2>
+        <p>You can request deletion of your account and associated personal data at any time:</p>
+        <ul>
+          <li><strong>In the App:</strong> go to <em>Profile</em> and choose <em>Delete account</em>, or</li>
+          <li><strong>By email:</strong> send a message to <a href="mailto:info@sirchillgin.be?subject=Delete%20ERP%20account">info@sirchillgin.be</a> with the subject "Delete ERP account", from the email address linked to your account.</li>
+        </ul>
+        <p>We will confirm your request and delete your account and personal data within 30 days. Data we are legally required to keep (e.g. invoices) is not erased but restricted and retained solely for that legal obligation. Uninstalling the App from your device does not delete your account.</p>
+        <div class="note"><p>You may also request deletion of specific data only, without closing your entire account. Just mention this in your email.</p></div>
+      </div>
+    </section>
+
+    <!-- 11 -->
+    <section class="s" id="s11">
+      <p class="num">11</p>
+      <div lang="nl">
+        <h2>Uw rechten</h2>
+        <p>Op grond van de AVG/GDPR heeft u het recht op inzage, rectificatie, wissing, beperking van de verwerking, gegevensoverdraagbaarheid en bezwaar. Waar de verwerking op toestemming berust, kunt u die op elk moment intrekken. Wij antwoorden binnen 30 dagen.</p>
+        <p>U heeft ook het recht een klacht in te dienen bij de Belgische Gegevensbeschermingsautoriteit: <a href="https://www.gegevensbeschermingsautoriteit.be" target="_blank" rel="noopener noreferrer">www.gegevensbeschermingsautoriteit.be</a>.</p>
+      </div>
+      <div lang="en">
+        <h2>Your rights</h2>
+        <p>Under the GDPR you have the right of access, rectification, erasure, restriction of processing, data portability and objection. Where processing is based on consent, you can withdraw it at any time. We respond within 30 days.</p>
+        <p>You also have the right to lodge a complaint with the Belgian Data Protection Authority: <a href="https://www.dataprotectionauthority.be" target="_blank" rel="noopener noreferrer">www.dataprotectionauthority.be</a>.</p>
+      </div>
+    </section>
+
+    <!-- 12 -->
+    <section class="s" id="s12">
+      <p class="num">12</p>
+      <div lang="nl">
+        <h2>Minderjarigen</h2>
+        <p>De App is een professionele toepassing en is niet bedoeld voor personen jonger dan 18 jaar. Wij verzamelen niet bewust gegevens van minderjarigen. Sir Chill verkoopt alcoholische en alcoholvrije dranken; accounts worden enkel aan meerderjarige zakelijke gebruikers toegekend.</p>
+      </div>
+      <div lang="en">
+        <h2>Children</h2>
+        <p>The App is a professional application and is not intended for anyone under the age of 18. We do not knowingly collect data from minors. Sir Chill sells alcoholic and alcohol-free beverages; accounts are only issued to adult business users.</p>
+      </div>
+    </section>
+
+    <!-- 13 -->
+    <section class="s" id="s13">
+      <p class="num">13</p>
+      <div lang="nl">
+        <h2>Wijzigingen</h2>
+        <p>Wij kunnen dit privacybeleid aanpassen, bijvoorbeeld wanneer de App nieuwe functies krijgt. De actuele versie staat altijd op deze pagina, met de ingangsdatum bovenaan. Bij belangrijke wijzigingen informeren wij u via de App of per e-mail.</p>
+      </div>
+      <div lang="en">
+        <h2>Changes</h2>
+        <p>We may update this privacy policy, for example when new features are added to the App. The current version is always available on this page, with the effective date at the top. We will inform you of material changes through the App or by email.</p>
+      </div>
+    </section>
+
+    <!-- 14 -->
+    <section class="s" id="s14">
+      <p class="num">14</p>
+      <div lang="nl">
+        <h2>Contact</h2>
+        <p>Voor vragen over dit privacybeleid of het uitoefenen van uw rechten:</p>
+      </div>
+      <div lang="en">
+        <h2>Contact</h2>
+        <p>For questions about this privacy policy or to exercise your rights:</p>
+      </div>
+      <div class="card">
+        <p class="label">Sir Chill BV</p>
+        <p>
+          E-mail: <a href="mailto:info@sirchillgin.be">info@sirchillgin.be</a><br>
+          Website: <a href="https://www.sirchillgin.be" target="_blank" rel="noopener noreferrer">www.sirchillgin.be</a><br>
+          <span lang="nl">België</span><span lang="en">Belgium</span>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>© 2026 Sir Chill BV · <span lang="nl">Privacybeleid Sir Chill ERP-app</span><span lang="en">Sir Chill ERP App Privacy Policy</span></footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var btns = document.querySelectorAll('[data-set-lang]');
+      function setLang(l) {
+        root.setAttribute('data-lang', l);
+        root.setAttribute('lang', l);
+        document.title = l === 'nl' ? 'Privacybeleid · Sir Chill ERP-app' : 'Privacy Policy · Sir Chill ERP App';
+        btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.setLang === l)); });
+      }
+      var q = new URLSearchParams(location.search).get('lang');
+      var initial = q === 'en' || q === 'nl' ? q : ((navigator.language || 'nl').toLowerCase().indexOf('nl') === 0 ? 'nl' : 'en');
+      setLang(initial);
+      btns.forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.setLang); }); });
+    })();
+  </script>
+</body>
+</html>

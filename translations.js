@@ -15,46 +15,46 @@ window.MISS_CHILL_TRANSLATIONS = {
       body: 'After ten years of Sir Chill, its makers decided to accompany their gentleman with a very gallant yet extraordinary lady: Miss Chill.<br><br>Miss Chill offers a remarkable alcohol-free moment of pleasure. With notes of vanilla, almond, mandarin and the aroma of the tobacco plant, the whole is crowned with a refined sweet accent. It is an eminently suitable alternative that excels both neat and mixed with Sir Chill Gin.<br><br>From now on, enjoyment knows no boundaries.'
     },
     statement: {
-      label: 'A NEW TRADITION · 0.0%',
+      label: 'A NEW TRADITION · ALC. FREE',
       line1: 'WITHOUT ALCOHOL.',
       line2: 'NEVER WITHOUT CHARACTER.',
-      sub: '0.0% Alcohol. 100% Character. Miss Chill brings you the spirit of celebration without compromise — with sophisticated aromas and a soft sweet touch for a taste that is unmistakably refined.'
+      sub: 'Alc. Free. 100% Character. Miss Chill brings you the spirit of celebration without compromise, with sophisticated aromas and a soft sweet touch for a taste that is unmistakably refined.'
     },
     products: {
-      label: 'OUR COLLECTION · 0.0%',
-      card1_tag: 'Sweet Aromas — Available Now',
-      card2_tag: 'Coming Soon · 0.0% · Launching Soon',
+      label: 'OUR COLLECTION · ALC. FREE',
+      card1_tag: 'Sweet Aromas · Available Now',
+      card2_tag: 'Coming Soon · Alc. Free · Launching Soon',
       card2_cs: 'Coming Soon',
       card2_name: 'Something<br>New'
     },
     bold: {
       small: 'Always You · Always Refined',
-      desc: 'Available now at select boutiques and specialty stores across Belgium. Not for purchase online — discover the full experience in store.',
+      desc: 'Available now at select boutiques and specialty stores across Belgium. Not for purchase online. Discover the full experience in store.',
       cta: 'Find a Store'
     },
     find: {
       label: 'Find Us · Locations',
       h2: 'WHERE TO<br>FIND<br><em>MISS CHILL</em>',
-      desc: 'Our spirits are available at select boutiques and specialty stores across Belgium. Not for purchase online — discover the full experience in store.'
+      desc: 'Our spirits are available at select boutiques and specialty stores across Belgium. Not for purchase online. Discover the full experience in store.'
     },
     footer: {
       story: 'Story', products: 'Products', find_us: 'Find Us',
-      copy: '© 2026 Miss Chill. All rights reserved. 0.0% Spirits · Belgium'
+      copy: '© 2026 Miss Chill. All rights reserved. Alc. Free Spirits · Belgium'
     },
     rose: {
       breadcrumb: 'Products',
-      product_label: 'Miss Chill Collection · 0.0%',
+      product_label: 'Miss Chill Collection · Alc. Free',
       name_line1: 'MISS CHILL',
-      name_line2: '0.0% ROSÉ',
+      name_line2: 'ALC. FREE ROSÉ',
       name_sub: 'A botanical spirit of rare elegance',
-      desc: 'With sophisticated aromas and a soft sweet touch, Miss Chill 0.0% Rosé is a spirit for those who celebrate life without limits. Taste the warmth of vanilla, the refinement of almond, and the brightness of mandarin — all without a drop of alcohol.',
+      desc: 'With sophisticated aromas and a soft sweet touch, Miss Chill Alc. Free Rosé is a spirit for those who celebrate life without limits. Taste the warmth of vanilla, the refinement of almond, and the brightness of mandarin, all without a drop of alcohol.',
       flavors_label: 'Tasting Notes',
       flavor_vanilla: 'Vanilla',
       flavor_almond: 'Almond',
       flavor_mandarin: 'Mandarin',
       flavor_tobacco: 'Tobacco Plant',
       specs_label: 'Specifications',
-      spec1_label: 'Alcohol', spec1_value: '0.0%',
+      spec1_label: 'Category', spec1_value: 'Alc. Free',
       spec2_label: 'Volume',  spec2_value: '50cl',
       spec3_label: 'Type',    spec3_value: 'Based on Gin',
       spec4_label: 'Origin',  spec4_value: 'Belgium',
@@ -63,17 +63,17 @@ window.MISS_CHILL_TRANSLATIONS = {
       cocktails_label: 'Signature Cocktails',
       cocktails_title1: 'MADE TO',
       cocktails_title2: 'BE MIXED',
-      cocktails_sub: 'Three exclusive recipes crafted to celebrate the botanical complexity of Miss Chill 0.0% Rosé. Elegant by nature. Always alcohol-free.',
+      cocktails_sub: 'Three exclusive recipes crafted to celebrate the botanical complexity of Miss Chill Alc. Free Rosé. Elegant by nature. Always alcohol-free.',
       ing_label: 'Ingredients',
       method_label: 'Method',
       c1_name: 'Miss Chill<br>& Tonic', c1_type: 'Classic · Refreshing',
-      c1_ingredients: '<li>5 cl Miss Chill 0.0% Rosé</li><li>15 cl premium tonic water</li><li>Mandarin or orange zest (garnish)</li><li>Ice</li>',
+      c1_ingredients: '<li>5 cl Miss Chill Alc. Free Rosé</li><li>15 cl premium tonic water</li><li>Mandarin or orange zest (garnish)</li><li>Ice</li>',
       c1_method: 'Pour Miss Chill Rosé over ice in a long drink glass. Gently top with tonic water. Garnish with a mandarin or orange zest.',
       c2_name: 'Velvet Silk<br>Highball', c2_type: 'Citrus · Gingery',
-      c2_ingredients: '<li>6 cl Miss Chill 0.0% Rosé</li><li>1.5 cl lemon juice</li><li>Ginger Ale (to top)</li><li>Lemon slice or ginger (garnish)</li><li>Ice</li>',
+      c2_ingredients: '<li>6 cl Miss Chill Alc. Free Rosé</li><li>1.5 cl lemon juice</li><li>Ginger Ale (to top)</li><li>Lemon slice or ginger (garnish)</li><li>Ice</li>',
       c2_method: 'Pour Miss Chill Rosé and lemon juice over ice. Top with Ginger Ale. Garnish with a lemon slice or a piece of fresh ginger.',
       c3_name: 'Bitter Sweet Symphony', c3_type: 'Bitter · Sophisticated',
-      c3_ingredients: '<li>5 cl Miss Chill 0.0% Rosé</li><li>1 bottle Crodino Rosso or alcohol-free bitter</li><li>Sparkling water (to top)</li><li>Orange or mandarin slice (garnish)</li><li>Ice</li>',
+      c3_ingredients: '<li>5 cl Miss Chill Alc. Free Rosé</li><li>1 bottle Crodino Rosso or alcohol-free bitter</li><li>Sparkling water (to top)</li><li>Orange or mandarin slice (garnish)</li><li>Ice</li>',
       c3_method: 'Pour Miss Chill Rosé and Crodino Rosso over ice. Top with sparkling water. Garnish with a slice of orange or mandarin.'
     },
     personalize: {
@@ -139,46 +139,46 @@ window.MISS_CHILL_TRANSLATIONS = {
       body: 'Na tien jaar Sir Chill hebben de makers besloten hun heer te vergezellen van een zeer galante, maar bijzondere dame: Miss Chill.<br><br>Miss Chill biedt een bijzonder genietmoment op alcoholvrije basis. Met toetsen van vanille, amandel, mandarijn en het aroma van de tabaksplant, wordt het geheel overgoten met een verfijnd zoet accent. Het is een uiterst geschikt alternatief dat zowel puur als in de mix met Sir Chill Gin uitstekend tot zijn recht komt.<br><br>Genieten kent voortaan geen grenzen meer.'
     },
     statement: {
-      label: 'EEN NIEUWE TRADITIE · 0.0%',
+      label: 'EEN NIEUWE TRADITIE · ALC. FREE',
       line1: 'ZONDER ALCOHOL.',
       line2: 'NOOIT ZONDER KARAKTER.',
-      sub: '0,0% Alcohol. 100% Karakter. Miss Chill brengt je de geest van feest zonder compromis — met gesofisticeerde aromas en een zachte zoete toets voor een smaak die onmiskenbaar verfijnd is.'
+      sub: 'Alc. Free. 100% Karakter. Miss Chill brengt je de geest van feest zonder compromis, met gesofisticeerde aromas en een zachte zoete toets voor een smaak die onmiskenbaar verfijnd is.'
     },
     products: {
-      label: 'ONZE COLLECTIE · 0.0%',
-      card1_tag: 'Zoete Aroma\'s — Nu Beschikbaar',
-      card2_tag: 'Binnenkort · 0.0% · Binnenkort Verkrijgbaar',
+      label: 'ONZE COLLECTIE · ALC. FREE',
+      card1_tag: 'Zoete Aroma\'s · Nu Beschikbaar',
+      card2_tag: 'Binnenkort · Alc. Free · Binnenkort Verkrijgbaar',
       card2_cs: 'Binnenkort',
       card2_name: 'Iets<br>Nieuws'
     },
     bold: {
       small: 'Altijd Jij · Altijd Verfijnd',
-      desc: 'Nu beschikbaar in selecte boetieks en speciaalzaken in België. Niet online te koop — ontdek de volledige ervaring in de winkel.',
+      desc: 'Nu beschikbaar in selecte boetieks en speciaalzaken in België. Niet online te koop, ontdek de volledige ervaring in de winkel.',
       cta: 'Vind een Winkel'
     },
     find: {
       label: 'Vind Ons · Winkellocaties',
       h2: 'WAAR TE<br>VINDEN<br><em>MISS CHILL</em>',
-      desc: 'Onze spirits zijn verkrijgbaar in selecte boetieks en speciaalzaken in België. Niet online te koop — ontdek de volledige ervaring in de winkel.'
+      desc: 'Onze spirits zijn verkrijgbaar in selecte boetieks en speciaalzaken in België. Niet online te koop, ontdek de volledige ervaring in de winkel.'
     },
     footer: {
       story: 'Verhaal', products: 'Producten', find_us: 'Vind Ons',
-      copy: '© 2026 Miss Chill. Alle rechten voorbehouden. 0.0% Spirits · België'
+      copy: '© 2026 Miss Chill. Alle rechten voorbehouden. Alc. Free Spirits · België'
     },
     rose: {
       breadcrumb: 'Producten',
-      product_label: 'Miss Chill Collectie · 0.0%',
+      product_label: 'Miss Chill Collectie · Alc. Free',
       name_line1: 'MISS CHILL',
-      name_line2: '0.0% ROSÉ',
+      name_line2: 'ALC. FREE ROSÉ',
       name_sub: 'Een botanische spirit van zeldzame elegantie',
-      desc: 'Met gesofisticeerde aromas en een zachte zoete toets is Miss Chill 0.0% Rosé een spirit voor wie het leven viert zonder beperkingen. Proef de warmte van vanille, de verfijning van amandel en de helderheid van mandarijn — helemaal zonder alcohol.',
+      desc: 'Met gesofisticeerde aromas en een zachte zoete toets is Miss Chill Alc. Free Rosé een spirit voor wie het leven viert zonder beperkingen. Proef de warmte van vanille, de verfijning van amandel en de helderheid van mandarijn, helemaal zonder alcohol.',
       flavors_label: 'Smaaknotities',
       flavor_vanilla: 'Vanille',
       flavor_almond: 'Amandel',
       flavor_mandarin: 'Mandarijn',
       flavor_tobacco: 'Tabaksplant',
       specs_label: 'Specificaties',
-      spec1_label: 'Alcohol', spec1_value: '0.0%',
+      spec1_label: 'Categorie', spec1_value: 'Alc. Free',
       spec2_label: 'Volume',  spec2_value: '50cl',
       spec3_label: 'Type',    spec3_value: 'Op basis van Gin',
       spec4_label: 'Herkomst', spec4_value: 'België',
@@ -187,17 +187,17 @@ window.MISS_CHILL_TRANSLATIONS = {
       cocktails_label: 'Signature Cocktails',
       cocktails_title1: 'GEMAAKT OM',
       cocktails_title2: 'TE MIXEN',
-      cocktails_sub: 'Drie exclusieve recepten gecreëerd om de botanische complexiteit van Miss Chill 0.0% Rosé te vieren. Elegant van nature. Altijd alcoholvrij.',
+      cocktails_sub: 'Drie exclusieve recepten gecreëerd om de botanische complexiteit van Miss Chill Alc. Free Rosé te vieren. Elegant van nature. Altijd alcoholvrij.',
       ing_label: 'Ingrediënten',
       method_label: 'Bereiding',
       c1_name: 'Miss Chill<br>& Tonic', c1_type: 'Klassiek · Verfrissend',
-      c1_ingredients: '<li>5 cl Miss Chill 0.0% Rosé</li><li>15 cl premium tonic</li><li>Zeste van mandarijn of sinaasappel (garnering)</li><li>IJsblokjes</li>',
+      c1_ingredients: '<li>5 cl Miss Chill Alc. Free Rosé</li><li>15 cl premium tonic</li><li>Zeste van mandarijn of sinaasappel (garnering)</li><li>IJsblokjes</li>',
       c1_method: 'Giet Miss Chill Rosé over ijs in een long drink glas. Vul zachtjes aan met tonic. Garneer met een zeste van mandarijn of sinaasappel.',
       c2_name: 'Velvet Silk<br>Highball', c2_type: 'Citrus · Gemberachtig',
-      c2_ingredients: '<li>6 cl Miss Chill 0.0% Rosé</li><li>1,5 cl citroensap</li><li>Ginger Ale (aanvullen)</li><li>Schijfje citroen of gember (garnering)</li><li>IJsblokjes</li>',
+      c2_ingredients: '<li>6 cl Miss Chill Alc. Free Rosé</li><li>1,5 cl citroensap</li><li>Ginger Ale (aanvullen)</li><li>Schijfje citroen of gember (garnering)</li><li>IJsblokjes</li>',
       c2_method: 'Giet Miss Chill Rosé en citroensap over ijs. Vul aan met Ginger Ale. Garneer met een schijfje citroen of een plakje gember.',
       c3_name: 'Bitter Sweet Symphony', c3_type: 'Bitter · Verfijnd',
-      c3_ingredients: '<li>5 cl Miss Chill 0.0% Rosé</li><li>1 flesje Crodino Rosso of alcoholvrije bitter</li><li>Bruiswater (aanvullen)</li><li>Schijfje sinaasappel of mandarijn (garnering)</li><li>IJsblokjes</li>',
+      c3_ingredients: '<li>5 cl Miss Chill Alc. Free Rosé</li><li>1 flesje Crodino Rosso of alcoholvrije bitter</li><li>Bruiswater (aanvullen)</li><li>Schijfje sinaasappel of mandarijn (garnering)</li><li>IJsblokjes</li>',
       c3_method: 'Giet Miss Chill Rosé en Crodino Rosso over ijs. Vul aan met bruiswater. Garneer met een schijfje sinaasappel of mandarijn.'
     },
     personalize: {
@@ -263,46 +263,46 @@ window.MISS_CHILL_TRANSLATIONS = {
       body: 'Après dix ans de Sir Chill, ses créateurs ont décidé d\'accompagner leur gentilhomme d\'une dame très galante et singulière : Miss Chill.<br><br>Miss Chill offre un moment de plaisir sans alcool tout à fait remarquable. Avec des notes de vanille, d\'amande, de mandarine et l\'arôme de la plante de tabac, l\'ensemble est parachevé d\'un accent doux et raffiné. C\'est une alternative parfaitement adaptée, aussi bien pure qu\'en mélange avec le Gin Sir Chill.<br><br>Désormais, le plaisir ne connaît plus de frontières.'
     },
     statement: {
-      label: 'UNE NOUVELLE TRADITION · 0.0%',
+      label: 'UNE NOUVELLE TRADITION · ALC. FREE',
       line1: 'SANS ALCOOL.',
       line2: 'JAMAIS SANS CARACTÈRE.',
-      sub: '0,0% Alcool. 100% Caractère. Miss Chill vous apporte l\'esprit de la célébration sans compromis — avec des arômes sophistiqués et une touche douce et sucrée pour un goût incontestablement raffiné.'
+      sub: 'Alc. Free. 100% Caractère. Miss Chill vous apporte l\'esprit de la célébration sans compromis, avec des arômes sophistiqués et une touche douce et sucrée pour un goût incontestablement raffiné.'
     },
     products: {
-      label: 'NOTRE COLLECTION · 0.0%',
-      card1_tag: 'Arômes Doux — Disponible Maintenant',
-      card2_tag: 'Bientôt · 0.0% · Lancement Imminent',
+      label: 'NOTRE COLLECTION · ALC. FREE',
+      card1_tag: 'Arômes Doux · Disponible Maintenant',
+      card2_tag: 'Bientôt · Alc. Free · Lancement Imminent',
       card2_cs: 'Bientôt',
       card2_name: 'Quelque Chose<br>de Nouveau'
     },
     bold: {
       small: 'Toujours Toi · Toujours Raffinée',
-      desc: 'Disponible maintenant dans une sélection de boutiques et épiceries fines en Belgique. Non disponible en ligne — découvrez l\'expérience complète en magasin.',
+      desc: 'Disponible maintenant dans une sélection de boutiques et épiceries fines en Belgique. Non disponible en ligne, découvrez l\'expérience complète en magasin.',
       cta: 'Trouver un Magasin'
     },
     find: {
       label: 'Nous Trouver · Points de Vente',
       h2: 'OÙ TROUVER<br>MISS<br><em>CHILL</em>',
-      desc: 'Nos spiritueux sont disponibles dans une sélection de boutiques et épiceries fines en Belgique. Non disponibles en ligne — découvrez l\'expérience complète en magasin.'
+      desc: 'Nos spiritueux sont disponibles dans une sélection de boutiques et épiceries fines en Belgique. Non disponibles en ligne, découvrez l\'expérience complète en magasin.'
     },
     footer: {
       story: 'Histoire', products: 'Produits', find_us: 'Nous Trouver',
-      copy: '© 2026 Miss Chill. Tous droits réservés. 0.0% Spirits · Belgique'
+      copy: '© 2026 Miss Chill. Tous droits réservés. Alc. Free Spirits · Belgique'
     },
     rose: {
       breadcrumb: 'Produits',
-      product_label: 'Collection Miss Chill · 0.0%',
+      product_label: 'Collection Miss Chill · Alc. Free',
       name_line1: 'MISS CHILL',
-      name_line2: '0.0% ROSÉ',
+      name_line2: 'ALC. FREE ROSÉ',
       name_sub: 'Un spiritueux botanique d\'une rare élégance',
-      desc: 'Avec ses arômes sophistiqués et sa touche douce et sucrée, Miss Chill 0.0% Rosé est un spiritueux pour ceux qui célèbrent la vie sans limites. Savourez la chaleur de la vanille, le raffinement de l\'amande et la luminosité de la mandarine — sans une goutte d\'alcool.',
+      desc: 'Avec ses arômes sophistiqués et sa touche douce et sucrée, Miss Chill Alc. Free Rosé est un spiritueux pour ceux qui célèbrent la vie sans limites. Savourez la chaleur de la vanille, le raffinement de l\'amande et la luminosité de la mandarine, sans une goutte d\'alcool.',
       flavors_label: 'Notes de Dégustation',
       flavor_vanilla: 'Vanille',
       flavor_almond: 'Amande',
       flavor_mandarin: 'Mandarine',
       flavor_tobacco: 'Plante de Tabac',
       specs_label: 'Caractéristiques',
-      spec1_label: 'Alcool',   spec1_value: '0.0%',
+      spec1_label: 'Catégorie',   spec1_value: 'Alc. Free',
       spec2_label: 'Volume',   spec2_value: '50cl',
       spec3_label: 'Type',     spec3_value: 'À base de Gin',
       spec4_label: 'Origine',  spec4_value: 'Belgique',
@@ -311,17 +311,17 @@ window.MISS_CHILL_TRANSLATIONS = {
       cocktails_label: 'Cocktails Signature',
       cocktails_title1: 'FAIT POUR',
       cocktails_title2: 'ÊTRE MIXÉ',
-      cocktails_sub: 'Trois recettes exclusives conçues pour célébrer la complexité botanique de Miss Chill 0.0% Rosé. Élégant par nature. Toujours sans alcool.',
+      cocktails_sub: 'Trois recettes exclusives conçues pour célébrer la complexité botanique de Miss Chill Alc. Free Rosé. Élégant par nature. Toujours sans alcool.',
       ing_label: 'Ingrédients',
       method_label: 'Méthode',
       c1_name: 'Miss Chill<br>& Tonic', c1_type: 'Classique · Rafraîchissant',
-      c1_ingredients: '<li>5 cl Miss Chill 0.0% Rosé</li><li>15 cl tonic water premium</li><li>Zeste de mandarine ou d\'orange (garniture)</li><li>Glaçons</li>',
+      c1_ingredients: '<li>5 cl Miss Chill Alc. Free Rosé</li><li>15 cl tonic water premium</li><li>Zeste de mandarine ou d\'orange (garniture)</li><li>Glaçons</li>',
       c1_method: 'Versez Miss Chill Rosé sur de la glace dans un verre long drink. Complétez délicatement avec le tonic. Garnissez d\'un zeste de mandarine ou d\'orange.',
       c2_name: 'Velvet Silk<br>Highball', c2_type: 'Citrus · Gingembre',
-      c2_ingredients: '<li>6 cl Miss Chill 0.0% Rosé</li><li>1,5 cl jus de citron</li><li>Ginger Ale (pour compléter)</li><li>Rondelle de citron ou gingembre (garniture)</li><li>Glaçons</li>',
+      c2_ingredients: '<li>6 cl Miss Chill Alc. Free Rosé</li><li>1,5 cl jus de citron</li><li>Ginger Ale (pour compléter)</li><li>Rondelle de citron ou gingembre (garniture)</li><li>Glaçons</li>',
       c2_method: 'Versez Miss Chill Rosé et le jus de citron sur de la glace. Complétez avec le Ginger Ale. Garnissez d\'une rondelle de citron ou d\'un morceau de gingembre frais.',
       c3_name: 'Bitter Sweet Symphony', c3_type: 'Amer · Sophistiqué',
-      c3_ingredients: '<li>5 cl Miss Chill 0.0% Rosé</li><li>1 bouteille de Crodino Rosso ou bitter sans alcool</li><li>Eau gazeuse (pour compléter)</li><li>Rondelle d\'orange ou de mandarine (garniture)</li><li>Glaçons</li>',
+      c3_ingredients: '<li>5 cl Miss Chill Alc. Free Rosé</li><li>1 bouteille de Crodino Rosso ou bitter sans alcool</li><li>Eau gazeuse (pour compléter)</li><li>Rondelle d\'orange ou de mandarine (garniture)</li><li>Glaçons</li>',
       c3_method: 'Versez Miss Chill Rosé et le Crodino Rosso sur de la glace. Complétez avec de l\'eau gazeuse. Garnissez d\'une rondelle d\'orange ou de mandarine.'
     },
     personalize: {
@@ -387,46 +387,46 @@ window.MISS_CHILL_TRANSLATIONS = {
       body: 'Nach zehn Jahren Sir Chill beschlossen die Macher, ihren Herrn von einer sehr galanten, aber besonderen Dame zu begleiten: Miss Chill.<br><br>Miss Chill bietet einen außergewöhnlichen alkoholfreien Genussmoment. Mit Noten von Vanille, Mandel, Mandarine und dem Aroma der Tabakpflanze wird das Ganze mit einem feinen süßen Akzent abgerundet. Es ist eine bestens geeignete Alternative, die sowohl pur als auch im Mix mit Sir Chill Gin hervorragend zur Geltung kommt.<br><br>Von nun an kennt der Genuss keine Grenzen mehr.'
     },
     statement: {
-      label: 'EINE NEUE TRADITION · 0.0%',
+      label: 'EINE NEUE TRADITION · ALC. FREE',
       line1: 'OHNE ALKOHOL.',
       line2: 'NIE OHNE CHARAKTER.',
-      sub: '0,0% Alkohol. 100% Charakter. Miss Chill bringt Ihnen den Geist des Feierns ohne Kompromisse — mit raffinierten Aromen und einer sanften süßen Note für einen unverwechselbar raffinierten Geschmack.'
+      sub: 'Alc. Free. 100% Charakter. Miss Chill bringt Ihnen den Geist des Feierns ohne Kompromisse, mit raffinierten Aromen und einer sanften süßen Note für einen unverwechselbar raffinierten Geschmack.'
     },
     products: {
-      label: 'UNSERE KOLLEKTION · 0.0%',
-      card1_tag: 'Sanfte Aromen — Jetzt Erhältlich',
-      card2_tag: 'Bald · 0.0% · Demnächst Erhältlich',
+      label: 'UNSERE KOLLEKTION · ALC. FREE',
+      card1_tag: 'Sanfte Aromen · Jetzt Erhältlich',
+      card2_tag: 'Bald · Alc. Free · Demnächst Erhältlich',
       card2_cs: 'Bald',
       card2_name: 'Etwas<br>Neues'
     },
     bold: {
       small: 'Immer Du · Immer Verfeinert',
-      desc: 'Jetzt in ausgewählten Boutiquen und Fachgeschäften in Belgien erhältlich. Nicht online erhältlich — erleben Sie die volle Erfahrung im Geschäft.',
+      desc: 'Jetzt in ausgewählten Boutiquen und Fachgeschäften in Belgien erhältlich. Nicht online erhältlich, erleben Sie die volle Erfahrung im Geschäft.',
       cta: 'Händler Finden'
     },
     find: {
       label: 'Uns Finden · Standorte',
       h2: 'WO ZU<br>FINDEN<br><em>MISS CHILL</em>',
-      desc: 'Unsere Spirituosen sind in ausgewählten Boutiquen und Fachgeschäften in Belgien erhältlich. Nicht online erhältlich — erleben Sie die volle Erfahrung im Geschäft.'
+      desc: 'Unsere Spirituosen sind in ausgewählten Boutiquen und Fachgeschäften in Belgien erhältlich. Nicht online erhältlich, erleben Sie die volle Erfahrung im Geschäft.'
     },
     footer: {
       story: 'Geschichte', products: 'Produkte', find_us: 'Uns Finden',
-      copy: '© 2026 Miss Chill. Alle Rechte vorbehalten. 0.0% Spirits · Belgien'
+      copy: '© 2026 Miss Chill. Alle Rechte vorbehalten. Alc. Free Spirits · Belgien'
     },
     rose: {
       breadcrumb: 'Produkte',
-      product_label: 'Miss Chill Kollektion · 0.0%',
+      product_label: 'Miss Chill Kollektion · Alc. Free',
       name_line1: 'MISS CHILL',
-      name_line2: '0.0% ROSÉ',
+      name_line2: 'ALC. FREE ROSÉ',
       name_sub: 'Ein botanischer Spirit von seltener Eleganz',
-      desc: 'Mit raffinierten Aromen und einer sanften süßen Note ist Miss Chill 0.0% Rosé ein Spirit für diejenigen, die das Leben grenzenlos feiern. Erlebe die Wärme von Vanille, die Verfeinerung von Mandel und die Frische der Mandarine — ganz ohne Alkohol.',
+      desc: 'Mit raffinierten Aromen und einer sanften süßen Note ist Miss Chill Alc. Free Rosé ein Spirit für diejenigen, die das Leben grenzenlos feiern. Erlebe die Wärme von Vanille, die Verfeinerung von Mandel und die Frische der Mandarine, ganz ohne Alkohol.',
       flavors_label: 'Geschmacksnotizen',
       flavor_vanilla: 'Vanille',
       flavor_almond: 'Mandel',
       flavor_mandarin: 'Mandarine',
       flavor_tobacco: 'Tabakpflanze',
       specs_label: 'Spezifikationen',
-      spec1_label: 'Alkohol',   spec1_value: '0.0%',
+      spec1_label: 'Kategorie',   spec1_value: 'Alc. Free',
       spec2_label: 'Volumen',   spec2_value: '50cl',
       spec3_label: 'Typ',      spec3_value: 'Auf Gin-Basis',
       spec4_label: 'Herkunft',  spec4_value: 'Belgien',
@@ -435,17 +435,17 @@ window.MISS_CHILL_TRANSLATIONS = {
       cocktails_label: 'Signature Cocktails',
       cocktails_title1: 'GEMACHT ZUM',
       cocktails_title2: 'MIXEN',
-      cocktails_sub: 'Drei exklusive Rezepte, um die botanische Komplexität von Miss Chill 0.0% Rosé zu feiern. Elegant von Natur aus. Immer alkoholfrei.',
+      cocktails_sub: 'Drei exklusive Rezepte, um die botanische Komplexität von Miss Chill Alc. Free Rosé zu feiern. Elegant von Natur aus. Immer alkoholfrei.',
       ing_label: 'Zutaten',
       method_label: 'Zubereitung',
       c1_name: 'Miss Chill<br>& Tonic', c1_type: 'Klassisch · Erfrischend',
-      c1_ingredients: '<li>5 cl Miss Chill 0.0% Rosé</li><li>15 cl Premium Tonic Water</li><li>Mandarinen- oder Orangenzeste (Garnitur)</li><li>Eis</li>',
+      c1_ingredients: '<li>5 cl Miss Chill Alc. Free Rosé</li><li>15 cl Premium Tonic Water</li><li>Mandarinen- oder Orangenzeste (Garnitur)</li><li>Eis</li>',
       c1_method: 'Miss Chill Rosé über Eis in ein Long-Drink-Glas gießen. Sanft mit Tonic Water auffüllen. Mit einer Mandarinen- oder Orangenzeste garnieren.',
       c2_name: 'Velvet Silk<br>Highball', c2_type: 'Zitrus · Ingwerig',
-      c2_ingredients: '<li>6 cl Miss Chill 0.0% Rosé</li><li>1,5 cl Zitronensaft</li><li>Ginger Ale (zum Auffüllen)</li><li>Zitronenscheibe oder Ingwer (Garnitur)</li><li>Eis</li>',
+      c2_ingredients: '<li>6 cl Miss Chill Alc. Free Rosé</li><li>1,5 cl Zitronensaft</li><li>Ginger Ale (zum Auffüllen)</li><li>Zitronenscheibe oder Ingwer (Garnitur)</li><li>Eis</li>',
       c2_method: 'Miss Chill Rosé und Zitronensaft über Eis gießen. Mit Ginger Ale auffüllen. Mit einer Zitronenscheibe oder einem Stück frischem Ingwer garnieren.',
       c3_name: 'Bitter Sweet Symphony', c3_type: 'Bitter · Anspruchsvoll',
-      c3_ingredients: '<li>5 cl Miss Chill 0.0% Rosé</li><li>1 Flasche Crodino Rosso oder alkoholfreier Bitter</li><li>Sprudelwasser (zum Auffüllen)</li><li>Orangen- oder Mandarinenscheibe (Garnitur)</li><li>Eis</li>',
+      c3_ingredients: '<li>5 cl Miss Chill Alc. Free Rosé</li><li>1 Flasche Crodino Rosso oder alkoholfreier Bitter</li><li>Sprudelwasser (zum Auffüllen)</li><li>Orangen- oder Mandarinenscheibe (Garnitur)</li><li>Eis</li>',
       c3_method: 'Miss Chill Rosé und Crodino Rosso über Eis gießen. Mit Sprudelwasser auffüllen. Mit einer Orangen- oder Mandarinenscheibe garnieren.'
     },
     personalize: {
@@ -511,46 +511,46 @@ window.MISS_CHILL_TRANSLATIONS = {
       body: 'Después de diez años de Sir Chill, sus creadores decidieron acompañar a su caballero con una dama muy galante pero singular: Miss Chill.<br><br>Miss Chill ofrece un momento de disfrute sin alcohol verdaderamente especial. Con notas de vainilla, almendra, mandarina y el aroma de la planta de tabaco, el conjunto se corona con un refinado toque dulce. Es una alternativa perfectamente adecuada tanto pura como mezclada con Sir Chill Gin.<br><br>A partir de ahora, el placer no tiene límites.'
     },
     statement: {
-      label: 'UNA NUEVA TRADICIÓN · 0.0%',
+      label: 'UNA NUEVA TRADICIÓN · ALC. FREE',
       line1: 'SIN ALCOHOL.',
       line2: 'NUNCA SIN CARÁCTER.',
-      sub: '0,0% Alcohol. 100% Carácter. Miss Chill te trae el espíritu de la celebración sin compromiso — con aromas sofisticados y un suave toque dulce para un sabor inconfundiblemente refinado.'
+      sub: 'Alc. Free. 100% Carácter. Miss Chill te trae el espíritu de la celebración sin compromiso, con aromas sofisticados y un suave toque dulce para un sabor inconfundiblemente refinado.'
     },
     products: {
-      label: 'NUESTRA COLECCIÓN · 0.0%',
-      card1_tag: 'Aromas Dulces — Disponible Ahora',
-      card2_tag: 'Próximamente · 0.0% · Lanzamiento Pronto',
+      label: 'NUESTRA COLECCIÓN · ALC. FREE',
+      card1_tag: 'Aromas Dulces · Disponible Ahora',
+      card2_tag: 'Próximamente · Alc. Free · Lanzamiento Pronto',
       card2_cs: 'Próximamente',
       card2_name: 'Algo<br>Nuevo'
     },
     bold: {
       small: 'Siempre Tú · Siempre Refinada',
-      desc: 'Disponible ahora en boutiques selectas y tiendas especializadas de Bélgica. No disponible en línea — descubre la experiencia completa en tienda.',
+      desc: 'Disponible ahora en boutiques selectas y tiendas especializadas de Bélgica. No disponible en línea. Descubre la experiencia completa en tienda.',
       cta: 'Encontrar Tienda'
     },
     find: {
       label: 'Encuéntranos · Puntos de Venta',
       h2: 'DÓNDE<br>ENCONTRAR<br><em>MISS CHILL</em>',
-      desc: 'Nuestros spirits están disponibles en boutiques selectas y tiendas especializadas de Bélgica. No disponible en línea — descubre la experiencia completa en tienda.'
+      desc: 'Nuestros spirits están disponibles en boutiques selectas y tiendas especializadas de Bélgica. No disponible en línea. Descubre la experiencia completa en tienda.'
     },
     footer: {
       story: 'Historia', products: 'Productos', find_us: 'Encuéntranos',
-      copy: '© 2026 Miss Chill. Todos los derechos reservados. 0.0% Spirits · Bélgica'
+      copy: '© 2026 Miss Chill. Todos los derechos reservados. Alc. Free Spirits · Bélgica'
     },
     rose: {
       breadcrumb: 'Productos',
-      product_label: 'Colección Miss Chill · 0.0%',
+      product_label: 'Colección Miss Chill · Alc. Free',
       name_line1: 'MISS CHILL',
-      name_line2: '0.0% ROSÉ',
+      name_line2: 'ALC. FREE ROSÉ',
       name_sub: 'Un espíritu botánico de rara elegancia',
-      desc: 'Con aromas sofisticados y un suave toque dulce, Miss Chill 0.0% Rosé es un espíritu para quienes celebran la vida sin límites. Siente la calidez de la vainilla, el refinamiento de la almendra y la luminosidad de la mandarina — sin una gota de alcohol.',
+      desc: 'Con aromas sofisticados y un suave toque dulce, Miss Chill Alc. Free Rosé es un espíritu para quienes celebran la vida sin límites. Siente la calidez de la vainilla, el refinamiento de la almendra y la luminosidad de la mandarina, sin una gota de alcohol.',
       flavors_label: 'Notas de Cata',
       flavor_vanilla: 'Vainilla',
       flavor_almond: 'Almendra',
       flavor_mandarin: 'Mandarina',
       flavor_tobacco: 'Planta de Tabaco',
       specs_label: 'Especificaciones',
-      spec1_label: 'Alcohol',   spec1_value: '0.0%',
+      spec1_label: 'Categoría',   spec1_value: 'Alc. Free',
       spec2_label: 'Volumen',   spec2_value: '50cl',
       spec3_label: 'Tipo',     spec3_value: 'A base de Gin',
       spec4_label: 'Origen',   spec4_value: 'Bélgica',
@@ -559,17 +559,17 @@ window.MISS_CHILL_TRANSLATIONS = {
       cocktails_label: 'Cócteles Signature',
       cocktails_title1: 'HECHO PARA',
       cocktails_title2: 'MEZCLAR',
-      cocktails_sub: 'Tres recetas exclusivas creadas para celebrar la complejidad botánica de Miss Chill 0.0% Rosé. Elegante por naturaleza. Siempre sin alcohol.',
+      cocktails_sub: 'Tres recetas exclusivas creadas para celebrar la complejidad botánica de Miss Chill Alc. Free Rosé. Elegante por naturaleza. Siempre sin alcohol.',
       ing_label: 'Ingredientes',
       method_label: 'Preparación',
       c1_name: 'Miss Chill<br>& Tonic', c1_type: 'Clásico · Refrescante',
-      c1_ingredients: '<li>5 cl Miss Chill 0.0% Rosé</li><li>15 cl tónica premium</li><li>Zeste de mandarina o naranja (guarnición)</li><li>Hielo</li>',
+      c1_ingredients: '<li>5 cl Miss Chill Alc. Free Rosé</li><li>15 cl tónica premium</li><li>Zeste de mandarina o naranja (guarnición)</li><li>Hielo</li>',
       c1_method: 'Vierte Miss Chill Rosé sobre hielo en un vaso largo. Completa suavemente con la tónica. Decora con un zeste de mandarina o naranja.',
       c2_name: 'Velvet Silk<br>Highball', c2_type: 'Cítrico · Jengibre',
-      c2_ingredients: '<li>6 cl Miss Chill 0.0% Rosé</li><li>1,5 cl zumo de limón</li><li>Ginger Ale (para completar)</li><li>Rodaja de limón o jengibre (guarnición)</li><li>Hielo</li>',
+      c2_ingredients: '<li>6 cl Miss Chill Alc. Free Rosé</li><li>1,5 cl zumo de limón</li><li>Ginger Ale (para completar)</li><li>Rodaja de limón o jengibre (guarnición)</li><li>Hielo</li>',
       c2_method: 'Vierte Miss Chill Rosé y el zumo de limón sobre hielo. Completa con Ginger Ale. Decora con una rodaja de limón o un trozo de jengibre fresco.',
       c3_name: 'Bitter Sweet Symphony', c3_type: 'Amargo · Sofisticado',
-      c3_ingredients: '<li>5 cl Miss Chill 0.0% Rosé</li><li>1 botella de Crodino Rosso o bitter sin alcohol</li><li>Agua con gas (para completar)</li><li>Rodaja de naranja o mandarina (guarnición)</li><li>Hielo</li>',
+      c3_ingredients: '<li>5 cl Miss Chill Alc. Free Rosé</li><li>1 botella de Crodino Rosso o bitter sin alcohol</li><li>Agua con gas (para completar)</li><li>Rodaja de naranja o mandarina (guarnición)</li><li>Hielo</li>',
       c3_method: 'Vierte Miss Chill Rosé y el Crodino Rosso sobre hielo. Completa con agua con gas. Decora con una rodaja de naranja o mandarina.'
     },
     personalize: {
@@ -635,46 +635,46 @@ window.MISS_CHILL_TRANSLATIONS = {
       body: 'Dopo dieci anni di Sir Chill, i suoi creatori hanno deciso di affiancare al loro gentiluomo una dama molto galante ma speciale: Miss Chill.<br><br>Miss Chill offre un momento di piacere analcolico davvero straordinario. Con note di vaniglia, mandorla, mandarino e l\'aroma della pianta del tabacco, il tutto è impreziosito da un raffinato accento dolce. È un\'alternativa ideale che si esprime al meglio sia liscia che miscelata con Sir Chill Gin.<br><br>D\'ora in poi, il piacere non conosce confini.'
     },
     statement: {
-      label: 'UNA NUOVA TRADIZIONE · 0.0%',
+      label: 'UNA NUOVA TRADIZIONE · ALC. FREE',
       line1: 'SENZA ALCOL.',
       line2: 'MAI SENZA CARATTERE.',
-      sub: '0,0% Alcol. 100% Carattere. Miss Chill ti porta lo spirito della celebrazione senza compromessi — con aromi sofisticati e un delicato tocco dolce per un gusto inconfondibilmente raffinato.'
+      sub: 'Alc. Free. 100% Carattere. Miss Chill ti porta lo spirito della celebrazione senza compromessi, con aromi sofisticati e un delicato tocco dolce per un gusto inconfondibilmente raffinato.'
     },
     products: {
-      label: 'LA NOSTRA COLLEZIONE · 0.0%',
-      card1_tag: 'Aromi Dolci — Disponibile Ora',
-      card2_tag: 'Prossimamente · 0.0% · In Arrivo',
+      label: 'LA NOSTRA COLLEZIONE · ALC. FREE',
+      card1_tag: 'Aromi Dolci · Disponibile Ora',
+      card2_tag: 'Prossimamente · Alc. Free · In Arrivo',
       card2_cs: 'Prossimamente',
       card2_name: 'Qualcosa<br>di Nuovo'
     },
     bold: {
       small: 'Sempre Tu · Sempre Raffinata',
-      desc: 'Disponibile ora in boutique selezionate e negozi specializzati in Belgio. Non acquistabile online — scopri l\'esperienza completa in negozio.',
+      desc: 'Disponibile ora in boutique selezionate e negozi specializzati in Belgio. Non acquistabile online. Scopri l\'esperienza completa in negozio.',
       cta: 'Trova un Negozio'
     },
     find: {
       label: 'Trovaci · Punti Vendita',
       h2: 'DOVE<br>TROVARE<br><em>MISS CHILL</em>',
-      desc: 'I nostri spirits sono disponibili in boutique selezionate e negozi specializzati in Belgio. Non acquistabili online — scopri l\'esperienza completa in negozio.'
+      desc: 'I nostri spirits sono disponibili in boutique selezionate e negozi specializzati in Belgio. Non acquistabili online. Scopri l\'esperienza completa in negozio.'
     },
     footer: {
       story: 'Storia', products: 'Prodotti', find_us: 'Trovaci',
-      copy: '© 2026 Miss Chill. Tutti i diritti riservati. 0.0% Spirits · Belgio'
+      copy: '© 2026 Miss Chill. Tutti i diritti riservati. Alc. Free Spirits · Belgio'
     },
     rose: {
       breadcrumb: 'Prodotti',
-      product_label: 'Collezione Miss Chill · 0.0%',
+      product_label: 'Collezione Miss Chill · Alc. Free',
       name_line1: 'MISS CHILL',
-      name_line2: '0.0% ROSÉ',
+      name_line2: 'ALC. FREE ROSÉ',
       name_sub: 'Uno spirito botanico di rara eleganza',
-      desc: 'Con aromi sofisticati e un delicato tocco dolce, Miss Chill 0.0% Rosé è uno spirito per chi celebra la vita senza limiti. Assapora il calore della vaniglia, il raffinamento della mandorla e la luminosità del mandarino — senza una goccia di alcol.',
+      desc: 'Con aromi sofisticati e un delicato tocco dolce, Miss Chill Alc. Free Rosé è uno spirito per chi celebra la vita senza limiti. Assapora il calore della vaniglia, il raffinamento della mandorla e la luminosità del mandarino, senza una goccia di alcol.',
       flavors_label: 'Note di Degustazione',
       flavor_vanilla: 'Vaniglia',
       flavor_almond: 'Mandorla',
       flavor_mandarin: 'Mandarino',
       flavor_tobacco: 'Pianta del Tabacco',
       specs_label: 'Specifiche',
-      spec1_label: 'Alcol',    spec1_value: '0.0%',
+      spec1_label: 'Categoria',    spec1_value: 'Alc. Free',
       spec2_label: 'Volume',   spec2_value: '50cl',
       spec3_label: 'Tipo',     spec3_value: 'A base di Gin',
       spec4_label: 'Origine',  spec4_value: 'Belgio',
@@ -683,17 +683,17 @@ window.MISS_CHILL_TRANSLATIONS = {
       cocktails_label: 'Cocktail Signature',
       cocktails_title1: 'FATTO PER',
       cocktails_title2: 'ESSERE MIXATO',
-      cocktails_sub: 'Tre ricette esclusive create per celebrare la complessità botanica di Miss Chill 0.0% Rosé. Elegante per natura. Sempre analcolico.',
+      cocktails_sub: 'Tre ricette esclusive create per celebrare la complessità botanica di Miss Chill Alc. Free Rosé. Elegante per natura. Sempre analcolico.',
       ing_label: 'Ingredienti',
       method_label: 'Metodo',
       c1_name: 'Miss Chill<br>& Tonic', c1_type: 'Classico · Rinfrescante',
-      c1_ingredients: '<li>5 cl Miss Chill 0.0% Rosé</li><li>15 cl tonic water premium</li><li>Scorza di mandarino o arancia (guarnizione)</li><li>Ghiaccio</li>',
+      c1_ingredients: '<li>5 cl Miss Chill Alc. Free Rosé</li><li>15 cl tonic water premium</li><li>Scorza di mandarino o arancia (guarnizione)</li><li>Ghiaccio</li>',
       c1_method: 'Versare Miss Chill Rosé sul ghiaccio in un bicchiere long drink. Completare delicatamente con il tonic. Guarnire con una scorza di mandarino o arancia.',
       c2_name: 'Velvet Silk<br>Highball', c2_type: 'Agrumi · Zenzero',
-      c2_ingredients: '<li>6 cl Miss Chill 0.0% Rosé</li><li>1,5 cl succo di limone</li><li>Ginger Ale (per completare)</li><li>Fettina di limone o zenzero (guarnizione)</li><li>Ghiaccio</li>',
+      c2_ingredients: '<li>6 cl Miss Chill Alc. Free Rosé</li><li>1,5 cl succo di limone</li><li>Ginger Ale (per completare)</li><li>Fettina di limone o zenzero (guarnizione)</li><li>Ghiaccio</li>',
       c2_method: 'Versare Miss Chill Rosé e il succo di limone sul ghiaccio. Completare con Ginger Ale. Guarnire con una fettina di limone o un pezzo di zenzero fresco.',
       c3_name: 'Bitter Sweet Symphony', c3_type: 'Amaro · Sofisticato',
-      c3_ingredients: '<li>5 cl Miss Chill 0.0% Rosé</li><li>1 bottiglietta di Crodino Rosso o bitter analcolico</li><li>Acqua frizzante (per completare)</li><li>Fettina di arancia o mandarino (guarnizione)</li><li>Ghiaccio</li>',
+      c3_ingredients: '<li>5 cl Miss Chill Alc. Free Rosé</li><li>1 bottiglietta di Crodino Rosso o bitter analcolico</li><li>Acqua frizzante (per completare)</li><li>Fettina di arancia o mandarino (guarnizione)</li><li>Ghiaccio</li>',
       c3_method: 'Versare Miss Chill Rosé e il Crodino Rosso sul ghiaccio. Completare con acqua frizzante. Guarnire con una fettina di arancia o mandarino.'
     },
     personalize: {
@@ -759,46 +759,46 @@ window.MISS_CHILL_TRANSLATIONS = {
       body: 'Pärast kümmet aastat Sir Chilli otsustasid selle loojad saata oma härrasmeest väga galantse, kuid erilise daamiga: Miss Chill.<br><br>Miss Chill pakub erakordset alkoholivaba naudingumomenti. Vanilje, mandli, mandariini nootide ja tubakataimearoomiga on terviku lõpetanud peen magus noot. See on suurepärane alternatiiv, mis sobib hästi nii puhta joogina kui ka Sir Chill Giniga segades.<br><br>Edaspidi ei tunne nauding piire.'
     },
     statement: {
-      label: 'UUS TRADITSIOON · 0.0%',
+      label: 'UUS TRADITSIOON · ALC. FREE',
       line1: 'ILMA ALKOHOLITA.',
       line2: 'MITTE KUNAGI ILMA ISELOOMUTA.',
-      sub: '0,0% Alkoholi. 100% Iseloomu. Miss Chill toob sulle tähistamise vaimu ilma kompromissideta — keerukate aroomide ja pehme magusa nüansiga maitseks, mis on vaieldamatult rafineeritud.'
+      sub: 'Alc. Free. 100% Iseloomu. Miss Chill toob sulle tähistamise vaimu ilma kompromissideta, keerukate aroomide ja pehme magusa nüansiga maitseks, mis on vaieldamatult rafineeritud.'
     },
     products: {
-      label: 'MEIE KOLLEKTSIOON · 0.0%',
-      card1_tag: 'Magusad Aroomid — Saadaval Nüüd',
-      card2_tag: 'Tulemas · 0.0% · Peagi Saadaval',
+      label: 'MEIE KOLLEKTSIOON · ALC. FREE',
+      card1_tag: 'Magusad Aroomid · Saadaval Nüüd',
+      card2_tag: 'Tulemas · Alc. Free · Peagi Saadaval',
       card2_cs: 'Tulemas',
       card2_name: 'Midagi<br>Uut'
     },
     bold: {
       small: 'Alati Sina · Alati Rafineeritud',
-      desc: 'Saadaval nüüd valitud butiikides ja eripoodides üle Belgia. Ei ole saadaval veebis — avasta täielik kogemus poes.',
+      desc: 'Saadaval nüüd valitud butiikides ja eripoodides üle Belgia. Ei ole saadaval veebis. Avasta täielik kogemus poes.',
       cta: 'Leia Pood'
     },
     find: {
       label: 'Leia Meid · Müügikohad',
       h2: 'KUS LEIDA<br>MISS<br><em>CHILL</em>',
-      desc: 'Meie spirituaalid on saadaval valitud butiikides ja eripoodides üle Belgia. Ei ole saadaval veebis — avasta täielik kogemus poes.'
+      desc: 'Meie spirituaalid on saadaval valitud butiikides ja eripoodides üle Belgia. Ei ole saadaval veebis. Avasta täielik kogemus poes.'
     },
     footer: {
       story: 'Lugu', products: 'Tooted', find_us: 'Leia Meid',
-      copy: '© 2026 Miss Chill. Kõik õigused kaitstud. 0.0% Spirits · Belgia'
+      copy: '© 2026 Miss Chill. Kõik õigused kaitstud. Alc. Free Spirits · Belgia'
     },
     rose: {
       breadcrumb: 'Tooted',
-      product_label: 'Miss Chill Kollektsioon · 0.0%',
+      product_label: 'Miss Chill Kollektsioon · Alc. Free',
       name_line1: 'MISS CHILL',
-      name_line2: '0.0% ROSÉ',
+      name_line2: 'ALC. FREE ROSÉ',
       name_sub: 'Botaaniline vaim haruldase elegantsiga',
-      desc: 'Keerukate aroomide ja pehme magusa nüansiga on Miss Chill 0.0% Rosé vaim neile, kes tähistavad elu ilma piiranguteta. Maitse vanilje soojust, mandli rafineeritust ja mandariini heledust — ilma ühe tilga alkoholita.',
+      desc: 'Keerukate aroomide ja pehme magusa nüansiga on Miss Chill Alc. Free Rosé vaim neile, kes tähistavad elu ilma piiranguteta. Maitse vanilje soojust, mandli rafineeritust ja mandariini heledust, ilma ühe tilga alkoholita.',
       flavors_label: 'Maitsemärkmed',
       flavor_vanilla: 'Vanill',
       flavor_almond: 'Mandel',
       flavor_mandarin: 'Mandariin',
       flavor_tobacco: 'Tubakataim',
       specs_label: 'Spetsifikatsioonid',
-      spec1_label: 'Alkohol',   spec1_value: '0.0%',
+      spec1_label: 'Kategooria',   spec1_value: 'Alc. Free',
       spec2_label: 'Maht',     spec2_value: '50cl',
       spec3_label: 'Tüüp',     spec3_value: 'Ginil põhinev',
       spec4_label: 'Päritolu',  spec4_value: 'Belgia',
@@ -807,17 +807,17 @@ window.MISS_CHILL_TRANSLATIONS = {
       cocktails_label: 'Signature Kokteilid',
       cocktails_title1: 'LOODUD ET',
       cocktails_title2: 'SEGADA',
-      cocktails_sub: 'Kolm eksklusiivset retsepti, mis on loodud Miss Chill 0.0% Rosé botaanilise keerukuse tähistamiseks. Elegantne loomulikult. Alati alkoholivaba.',
+      cocktails_sub: 'Kolm eksklusiivset retsepti, mis on loodud Miss Chill Alc. Free Rosé botaanilise keerukuse tähistamiseks. Elegantne loomulikult. Alati alkoholivaba.',
       ing_label: 'Koostisosad',
       method_label: 'Valmistamine',
       c1_name: 'Miss Chill<br>& Tonic', c1_type: 'Klassikaline · Värskendav',
-      c1_ingredients: '<li>5 cl Miss Chill 0.0% Rosé</li><li>15 cl premium toonik</li><li>Mandariini või apelsini koor (kaunistus)</li><li>Jää</li>',
+      c1_ingredients: '<li>5 cl Miss Chill Alc. Free Rosé</li><li>15 cl premium toonik</li><li>Mandariini või apelsini koor (kaunistus)</li><li>Jää</li>',
       c1_method: 'Vala Miss Chill Rosé jää peale pika joogi klaasi. Täida õrnalt toonikuga. Kaunista mandariini või apelsini koorega.',
       c2_name: 'Velvet Silk<br>Highball', c2_type: 'Tsitrus · Ingverimaitseline',
-      c2_ingredients: '<li>6 cl Miss Chill 0.0% Rosé</li><li>1,5 cl sidrunimahl</li><li>Ginger Ale (täitmiseks)</li><li>Sidruniviilik või ingver (kaunistus)</li><li>Jää</li>',
+      c2_ingredients: '<li>6 cl Miss Chill Alc. Free Rosé</li><li>1,5 cl sidrunimahl</li><li>Ginger Ale (täitmiseks)</li><li>Sidruniviilik või ingver (kaunistus)</li><li>Jää</li>',
       c2_method: 'Vala Miss Chill Rosé ja sidrunimahl jää peale. Täida Ginger Ale\'iga. Kaunista sidruniviilikuga või tükk värsket ingverit.',
       c3_name: 'Bitter Sweet Symphony', c3_type: 'Mõru · Peen',
-      c3_ingredients: '<li>5 cl Miss Chill 0.0% Rosé</li><li>1 pudel Crodino Rosso\'t või alkoholivaba bitter\'it</li><li>Mullivesi (täitmiseks)</li><li>Apelsini- või mandariiniviilik (kaunistus)</li><li>Jää</li>',
+      c3_ingredients: '<li>5 cl Miss Chill Alc. Free Rosé</li><li>1 pudel Crodino Rosso\'t või alkoholivaba bitter\'it</li><li>Mullivesi (täitmiseks)</li><li>Apelsini- või mandariiniviilik (kaunistus)</li><li>Jää</li>',
       c3_method: 'Vala Miss Chill Rosé ja Crodino Rosso jää peale. Täida mulliveega. Kaunista apelsini- või mandariiniviiliku.'
     },
     personalize: {
@@ -883,46 +883,46 @@ window.MISS_CHILL_TRANSLATIONS = {
       body: 'Depois de dez anos de Sir Chill, os seus criadores decidiram acompanhar o seu cavalheiro com uma dama muito galante mas singular: Miss Chill.<br><br>Miss Chill oferece um momento de prazer sem álcool verdadeiramente extraordinário. Com notas de baunilha, amêndoa, tangerina e o aroma da planta de tabaco, o conjunto é coroado com um refinado toque doce. É uma alternativa perfeitamente adequada tanto pura como misturada com Sir Chill Gin.<br><br>De agora em diante, o prazer não conhece fronteiras.'
     },
     statement: {
-      label: 'UMA NOVA TRADIÇÃO · 0.0%',
+      label: 'UMA NOVA TRADIÇÃO · ALC. FREE',
       line1: 'SEM ÁLCOOL.',
       line2: 'NUNCA SEM CARÁCTER.',
-      sub: '0,0% Álcool. 100% Caráter. Miss Chill traz-lhe o espírito da celebração sem compromissos — com aromas sofisticados e um suave toque adocicado para um sabor inconfundivelmente refinado.'
+      sub: 'Alc. Free. 100% Caráter. Miss Chill traz-lhe o espírito da celebração sem compromissos, com aromas sofisticados e um suave toque adocicado para um sabor inconfundivelmente refinado.'
     },
     products: {
-      label: 'A NOSSA COLEÇÃO · 0.0%',
-      card1_tag: 'Aromas Doces — Disponível Agora',
-      card2_tag: 'Em Breve · 0.0% · Lançamento em Breve',
+      label: 'A NOSSA COLEÇÃO · ALC. FREE',
+      card1_tag: 'Aromas Doces · Disponível Agora',
+      card2_tag: 'Em Breve · Alc. Free · Lançamento em Breve',
       card2_cs: 'Em Breve',
       card2_name: 'Algo<br>Novo'
     },
     bold: {
       small: 'Sempre Tu · Sempre Refinada',
-      desc: 'Disponível agora em boutiques selecionadas e lojas especializadas na Bélgica. Não disponível online — descubra a experiência completa na loja.',
+      desc: 'Disponível agora em boutiques selecionadas e lojas especializadas na Bélgica. Não disponível online. Descubra a experiência completa na loja.',
       cta: 'Encontrar Loja'
     },
     find: {
       label: 'Encontre-nos · Pontos de Venda',
       h2: 'ONDE<br>ENCONTRAR<br><em>MISS CHILL</em>',
-      desc: 'Os nossos spirits estão disponíveis em boutiques selecionadas e lojas especializadas na Bélgica. Não disponível online — descubra a experiência completa na loja.'
+      desc: 'Os nossos spirits estão disponíveis em boutiques selecionadas e lojas especializadas na Bélgica. Não disponível online. Descubra a experiência completa na loja.'
     },
     footer: {
       story: 'História', products: 'Produtos', find_us: 'Encontre-nos',
-      copy: '© 2026 Miss Chill. Todos os direitos reservados. 0.0% Spirits · Bélgica'
+      copy: '© 2026 Miss Chill. Todos os direitos reservados. Alc. Free Spirits · Bélgica'
     },
     rose: {
       breadcrumb: 'Produtos',
-      product_label: 'Coleção Miss Chill · 0.0%',
+      product_label: 'Coleção Miss Chill · Alc. Free',
       name_line1: 'MISS CHILL',
-      name_line2: '0.0% ROSÉ',
+      name_line2: 'ALC. FREE ROSÉ',
       name_sub: 'Um espírito botânico de rara elegância',
-      desc: 'Com aromas sofisticados e um suave toque adocicado, Miss Chill 0.0% Rosé é um espírito para quem celebra a vida sem limites. Sinta o calor da baunilha, o requinte da amêndoa e a luminosidade da tangerina — sem uma gota de álcool.',
+      desc: 'Com aromas sofisticados e um suave toque adocicado, Miss Chill Alc. Free Rosé é um espírito para quem celebra a vida sem limites. Sinta o calor da baunilha, o requinte da amêndoa e a luminosidade da tangerina, sem uma gota de álcool.',
       flavors_label: 'Notas de Degustação',
       flavor_vanilla: 'Baunilha',
       flavor_almond: 'Amêndoa',
       flavor_mandarin: 'Tangerina',
       flavor_tobacco: 'Planta de Tabaco',
       specs_label: 'Especificações',
-      spec1_label: 'Álcool',    spec1_value: '0.0%',
+      spec1_label: 'Categoria',    spec1_value: 'Alc. Free',
       spec2_label: 'Volume',   spec2_value: '50cl',
       spec3_label: 'Tipo',     spec3_value: 'À base de Gin',
       spec4_label: 'Origem',   spec4_value: 'Bélgica',
@@ -931,17 +931,17 @@ window.MISS_CHILL_TRANSLATIONS = {
       cocktails_label: 'Cocktails Signature',
       cocktails_title1: 'FEITO PARA',
       cocktails_title2: 'SER MISTURADO',
-      cocktails_sub: 'Três receitas exclusivas criadas para celebrar a complexidade botânica do Miss Chill 0.0% Rosé. Elegante por natureza. Sempre sem álcool.',
+      cocktails_sub: 'Três receitas exclusivas criadas para celebrar a complexidade botânica do Miss Chill Alc. Free Rosé. Elegante por natureza. Sempre sem álcool.',
       ing_label: 'Ingredientes',
       method_label: 'Preparação',
       c1_name: 'Miss Chill<br>& Tonic', c1_type: 'Clássico · Refrescante',
-      c1_ingredients: '<li>5 cl Miss Chill 0.0% Rosé</li><li>15 cl tónica premium</li><li>Zeste de tangerina ou laranja (guarnição)</li><li>Gelo</li>',
+      c1_ingredients: '<li>5 cl Miss Chill Alc. Free Rosé</li><li>15 cl tónica premium</li><li>Zeste de tangerina ou laranja (guarnição)</li><li>Gelo</li>',
       c1_method: 'Verta Miss Chill Rosé sobre gelo num copo long drink. Complete suavemente com a tónica. Decore com um zeste de tangerina ou laranja.',
       c2_name: 'Velvet Silk<br>Highball', c2_type: 'Cítrico · Gengibre',
-      c2_ingredients: '<li>6 cl Miss Chill 0.0% Rosé</li><li>1,5 cl sumo de limão</li><li>Ginger Ale (para completar)</li><li>Rodela de limão ou gengibre (guarnição)</li><li>Gelo</li>',
+      c2_ingredients: '<li>6 cl Miss Chill Alc. Free Rosé</li><li>1,5 cl sumo de limão</li><li>Ginger Ale (para completar)</li><li>Rodela de limão ou gengibre (guarnição)</li><li>Gelo</li>',
       c2_method: 'Verta Miss Chill Rosé e o sumo de limão sobre gelo. Complete com Ginger Ale. Decore com uma rodela de limão ou um pedaço de gengibre fresco.',
       c3_name: 'Bitter Sweet Symphony', c3_type: 'Amargo · Sofisticado',
-      c3_ingredients: '<li>5 cl Miss Chill 0.0% Rosé</li><li>1 garrafa de Crodino Rosso ou bitter sem álcool</li><li>Água com gás (para completar)</li><li>Rodela de laranja ou tangerina (guarnição)</li><li>Gelo</li>',
+      c3_ingredients: '<li>5 cl Miss Chill Alc. Free Rosé</li><li>1 garrafa de Crodino Rosso ou bitter sem álcool</li><li>Água com gás (para completar)</li><li>Rodela de laranja ou tangerina (guarnição)</li><li>Gelo</li>',
       c3_method: 'Verta Miss Chill Rosé e o Crodino Rosso sobre gelo. Complete com água com gás. Decore com uma rodela de laranja ou tangerina.'
     },
     personalize: {
